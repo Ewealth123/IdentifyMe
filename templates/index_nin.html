@@ -1,0 +1,394 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href= "{% static 'index_nin.css' %}">
+  <link rel="stylesheet" href= "{% static 'icon.css' %}">
+  <link rel="stylesheet" href= "{% static 'icon1.css' %}">
+  <link rel="icon" href="{% static 'logo (2).png' %}"/>
+  <meta name="referrer" content="no-referrer-when-downgrade">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!-- Include the above in your HEAD tag -->
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
+  <title>IdentityMe</title>
+</head>
+<body>  
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <img src="{% static 'logo (2).png' %}" alt="">
+      <a class="navbar-brand" href="index_nin">IdentityMe</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">About Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contact Us</a>
+          </li>
+          
+          <li class="reg">
+            <a class="nav-link" href=" account/register">Register/Login</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!--- header -->   
+  <div class="nin_container">
+    <img src="{% static 'identity_img.png' %}" alt="">
+    <p>Your Identity is your safety and your pride</p>
+    <h2>Smart And Reliable Identity Verification Services</h2>
+    <h1>IdentityMe helps you <br> know youself better!</h1>
+    <a href = "account/register">
+      <button class="btn">Get Started...</button>
+    </a>
+  </div>
+  <!-- ======= Services Section ======= -->
+  <section id="services" class="about">
+    <div class="ser_container">
+
+      <div class="row">
+
+        <div class="col-xl-5 col-lg-6 d-flex justify-content-center video-box align-items-stretch">
+        </div>
+
+        <div class="col-xl-7 col-lg-6 icon-boxes d-flex flex-column align-items-stretch justify-content-center py-5 px-lg-5">
+          <h3>Our Services</h3>
+          <div class="ser_img">
+            <img src="{% static 'ID-Verification-banks.png' %}" alt="">
+          </div>
+
+          <div class="icon-box">
+            <div class="icon"><i class="bx bx-block"></i></div>
+            <h4 class="title">Phone Number Verification</h4>
+            <p class="description">Use your phone number to verify your NIN</p>
+          </div>
+
+          <div class="icon-box">
+            <div class="icon"><i class="bx bx-block"></i></div>
+            <h4 class="title">NIN Verification</h4>
+            <p class="description">Verify your NIN with your assigned National Identity Number</p>
+          </div>
+
+          <div class="icon-box">
+            <div class="icon"><i class="bx bx-block"></i></div>
+            <h4 class="title">VIN Verification</h4>
+            <p class="description">Verify your Voters Identity Number</p>
+          </div>
+
+          <div class="icon-box">
+            <div class="icon"><i class="bx bx-block"></i></div>
+            <h4 class="title">CAC Verification</h4>
+            <p class="description">Verify your Corporate Affairs Commission Number</p>
+          </div>
+
+          <div class="icon-box">
+            <div class="icon"><i class="bx bx-block"></i></div>
+            <h4 class="title">Print NIN Slip</h4>
+            <p class="description">You can also print your NIN Slip</p>
+          </div>
+          <div class="icon-box">
+            <div class="icon"><i class="bx bx-block"></i></div>
+            <h4 class="title">BVN Verification</h4>
+            <p class="description">You can also print your NIN Slip</p>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section><!-- End About Section -->
+  
+  <section id="about" class="about1">
+    <div class="wk_container">
+
+      <div class="row">
+
+        <div class="col-xl-5 col-lg-6 d-flex justify-content-center video-box align-items-stretch">
+        </div>
+
+        <div class="col-xl-7 col-lg-6 icon-boxes d-flex flex-column align-items-stretch justify-content-center py-5 px-lg-5">
+          <h3>How it Works</h3>
+          <div class="ser_img1">
+            <img src="{% static 'ID-Verification-banks.png' %}" alt="">
+          </div>
+          <div class="icon-box">
+            <div class="icon"><i class="bx bx-user-plus"></i></div>
+            <h4 class="title"><a href="">Register</a></h4>
+            <p class="description">Fill in your information then Register.
+              After registration you will receive an email to activate your account.
+              After activation proceed to fund your wallet.
+              Then you can go ahead to verify an identity<br>
+              1. Click Create account.<br>
+              2. Enter your name and other information requested and submit. (Account successfully created)</p>
+          </div>
+
+          <div class="icon-box">
+            <div class="icon"><i class="bx bx-credit-card"></i></div>
+            <h4 class="title"><a href="">Fund your Wallet</a></h4>
+            <p class="description">Wallet is automatically created for your at sign up
+              <br>1. Click on wallet and type the preferred amount you would like to recharge
+              <br>2. Proceed
+              <br>3. Click on pay then
+              <br>4. Select your preferred mode of payment               
+            </p>
+          </div>
+
+          <div class="icon-box">
+            <div class="icon"><i class="bx bxs-user-badge"></i></div>
+            <h4 class="title"><a href="">Verify your data</a></h4>
+            <p class="description">Click on preferred option 
+              <br>Enter the details </p>
+          </div>
+
+          
+          <div class="icon-box">
+            <div class="icon"><i class="bx bxs-file-doc"></i></div>
+            <h4 class="title"><a href="">View result</a></h4>
+            <p class="description">Receive your verification proof and
+              <br>Share your verified ID</p>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section><!-- End About Section -->
+
+  <section id="counts" class="counts">
+    <div class="count_container">
+
+
+      <div class="row counters">
+
+        <div class="col-lg-3 col-6 text-center">
+          <span data-toggle="counter-up">1,463</span>
+          <p>Users</p>
+        </div>
+
+        <div class="col-lg-3 col-6 text-center">
+          <span data-toggle="counter-up">98,491</span>
+          <p>Identity Verified</p>
+        </div>
+
+        <div class="col-lg-3 col-6 text-center">
+          <span data-toggle="counter-up">232</span>
+          <p>Wallets</p>
+        </div>
+
+
+
+      </div>
+
+    </div>
+  </section>
+  <!-- End Counts Section -->
+  <footer id="dk-footer" class="dk-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-lg-4">
+                <div class="dk-footer-box-info">
+                    <a href="index_nin.html" class="footer-logo">
+                        <img src="{% static 'logo.jpg' %}" alt="footer_logo" class="img-fluid">
+                    </a>
+                    
+                    <div class="footer-social-link">
+                        <h3>Follow us</h3>
+                        <ul>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-facebook"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-twitter"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-google-plus"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-linkedin"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-instagram"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- End Social link -->
+                </div>
+                <!-- End Footer info -->
+                <div class="footer-awarad">
+                    <img src="images/icon/best.png" alt="">
+                    
+                </div>
+            </div>
+            <!-- End Col -->
+            <div class="col-md-12 col-lg-8">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="contact-us">
+                            
+                            <!-- End contact Icon -->
+                            
+                            <!-- End Contact Info -->
+                        </div>
+                        <!-- End Contact Us -->
+                    </div>
+                    <!-- End Col -->
+                    <div class="col-md-6">
+                        <div class="contact-us contact-us-last">
+                            <div class="contact-icon">
+                                <i class="fa fa-volume-control-phone" aria-hidden="true"></i>
+                            </div>
+                            <!-- End contact Icon -->
+                            <div class="contact-info">
+                                <h3>+234 817 092 7658</h3>
+                                <p>Give us a call</p>
+                            </div>
+                            <!-- End Contact Info -->
+                        </div>
+                        <!-- End Contact Us -->
+                    </div>
+                    <!-- End Col -->
+                </div>
+                <!-- End Contact Row -->
+                <div class="row">
+                    <div class="col-md-12 col-lg-6">
+                        <div class="footer-widget footer-left-widget">
+                            <div class="section-heading">
+                                <h3>Useful Links</h3>
+                                <span class="animate-border border-black"></span>
+                            </div>
+                            <ul>
+                                <li>
+                                    <a href="#">About us</a>
+                                </li>
+                                <li>
+                                    <a href="#">Services</a>
+                                </li>
+                                
+                            </ul>
+                            <ul>
+                                <li>
+                                    <a href="#">Contact us</a>
+                                </li>
+                                
+                                
+                                <li>
+                                    <a href="#">Faq</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- End Footer Widget -->
+                    </div>
+                    <!-- End col -->
+                    <div class="col-md-12 col-lg-6">
+                        <div class="footer-widget">
+                            <div class="section-heading">
+                                <h3>Subscribe</h3>
+                                <span class="animate-border border-black"></span>
+                            </div>
+                            <p style="color: white;"><!-- Don’t miss to subscribe to our new feeds, kindly fill the form below. -->
+                            Register to get update directly from us....</p>
+                            <form action="#">
+                                <div class="form-row">
+                                    <div class="col dk-footer-form">
+                                        <input type="email" class="form-control" placeholder="Email Address">
+                                        <button type="submit">
+                                            <i class="fa fa-send"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                            <!-- End form -->
+                        </div>
+                        <!-- End footer widget -->
+                    </div>
+                    <!-- End Col -->
+                </div>
+                <!-- End Row -->
+            </div>
+            <!-- End Col -->
+        </div>
+        <!-- End Widget Row -->
+    </div>
+    <!-- End Contact Container -->
+
+
+    <div class="copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <span>Copyright © 2019, All Right Reserved Ewealth_Tech</span>
+                </div>
+                <!-- End Col -->
+                <div class="col-md-6">
+                    <div class="copyright-menu">
+                        <ul>
+                            <li>
+                                <a href="index_nin.html">Home</a>
+                            </li>
+                            <li>
+                                <a href="#">Terms</a>
+                            </li>
+                            <li>
+                                <a href="#">Privacy Policy</a>
+                            </li>
+                            <li>
+                                <a href="#">Contact</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- End col -->
+            </div>
+            <!-- End Row -->
+        </div>
+        <!-- End Copyright Container -->
+    </div>
+    <!-- End Copyright -->
+    <!-- Back to top -->
+    <div id="back-to-top" class="back-to-top">
+        <button class="btn btn-dark" title="Back to Top" style="display: block;">
+            <i class="fa fa-angle-up"></i>
+        </button>
+    </div>
+    <!-- End Back to top -->
+  </footer> 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+        (function(){
+        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+        s1.async=true;
+        s1.src='https://embed.tawk.to/634d7f39daff0e1306d2740d/1gfjbhv0h';
+        s1.charset='UTF-8';
+        s1.setAttribute('crossorigin','*');
+        s0.parentNode.insertBefore(s1,s0);
+        })();
+    </script>
+    <!--End of Tawk.to Script-->
+</body>
+</html>

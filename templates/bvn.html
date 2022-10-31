@@ -1,0 +1,220 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IdentityMe</title>
+    <!-- BOXICON CDN --> 
+    <link rel="icon" href="{% static 'logo (2).png' %}"/>
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+      <!-- STYLESHEET -->
+    <link rel="stylesheet" href="{% static 'bvn.css' %}">
+    <link rel="stylesheet" href="{% static 'v_by_nin_searchs.css' %}">
+
+</head>
+<body>
+    <div class="container">
+        <aside style="background: #373c52;">
+            <div class="top">
+                <div class="logo">
+                    <img src="{% static 'logo (2).png' %}" alt="">
+                    <h2>IdentityMe</h2>
+                </div>
+                <div class="close" id="close-btn">
+                    <i class='bx bxs-x-circle'></i>
+                </div>
+            </div>
+            <div class="sidebar">
+                <ul class="nav-link">
+                    <li>
+                        <a href="dashboard">
+                            <i class='bx bxs-dashboard'></i>
+                            <span class="link_name">Dashboard</span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <div class="icon-link">
+                            <a href="wallet">
+                                <i class='bx bx-wallet'></i>
+                                <span class="link_name">Wallet</span> 
+                            </a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="icon-link">
+                            <a href="#">
+                                <i class='bx bx-transfer'></i>
+                                <span class="link_name">NIN Services</span> 
+                            </a>
+                        </div>
+            
+                        <ul class="sub-menu">
+                            <li><a href="v_by_ninw">Verification By NIN</a></li>
+                            <li><a href="v_by_phone">Verification By Phone Number</a></li>
+                            <li><a href="v_by_ninw">NIN Validity Check</a></li>
+                            <li><a href="v_by_vnin">Virtual NIN Full Details</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <div class="icon-link">
+                            <a href="#">
+                                <i class='bx bx-transfer' ></i>
+                                <span class="link_name">BVN services</span> 
+                            </a>
+                        </div>
+                        <ul class="sub-menu">
+                            <li><a href="bvn">BVN Full Details</a></li>
+                            <li><a href="bbm">BVN Boolean Match</a></li>
+                            
+                        </ul>
+                    </li>
+                    <li>
+                        <div class="icon-link">
+                            <a href="voters">
+                                <i class='bx bx-transfer' ></i>
+                                <span class="link_name">Voter ID Services</span> 
+                            </a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="icon-link">
+                            <a href="int_pass">
+                                <i class='bx bx-transfer' ></i>
+                                <span class="link_name">International Passport</span> 
+                            </a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="icon-link">
+                            <a href="#">
+                                <i class='bx bx-cog' ></i>
+                                <span class="link_name">My Profile</span> 
+                            </a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="icon-link">
+                            <a href="account/logout">
+                                <i class='bx bx-log-out'></i>
+                                <span class="link_name">Logout</span> 
+                            </a>
+                        </div>
+                    </li>
+                </ul>  
+            </div>
+        </aside>
+
+        <!-- end of aside-->
+        <main>
+            <h2>BVN Verification</h2>
+            <div class="insights">
+                <div class="sales">
+                    <i class='bx bxs-bar-chart-square'></i>
+                    <div class="middle">
+                        <div class="left">
+                            <h3>Account Balance</h3>
+                            {% if user.is_authenticated %}
+                            <h2>N {{wallet }}</h2>
+                            {% else %}
+                            <h2>Hel, {{ user.username }}</h2>
+                            {% endif %}
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <!-- End Of Sales -->
+            </div>
+            <!-- End of Insights-->
+            <div class="recent-order">
+                <h2>Search Number</h2>
+                {% for message in messages %}
+                    {%if "ans" in message.tags %}
+                        <p style= "color: red;font-size: 15px;">{{message}}</p>
+                    {%endif%}
+                {% endfor %}
+            </div>
+            <div class="david">
+                <div class="transfer">
+                    <form action="" method="POST">
+                        {% csrf_token %}
+                        <i class='bx bxs-wallet'></i>
+                        <h2 class="client">BNV Number</h2>
+                        <input type="text" name="bvn_number" placeholder="1234567789" required>
+                        <button>Search</button>
+                    </form>
+                </div>
+            </div> 
+            <div class="frame">
+                <img class="bvn_img"  src="data:image/png;base64,{{img_data}}"/>
+                <img class="bvn_img2" src="data:image/png;base64,{{img_data1}}"/>
+            </div>
+        </main>
+        <!--   End of Main -->
+        <div class="right">
+            <div class="top">
+                <button id="menu_btn">
+                    <i class='bx bx-menu'></i>
+                </button>
+                <div class="theme-toggler">
+                    <i class='bx bx-sun active' ></i>
+                    <i class='bx bxs-moon' ></i>
+                </div>
+                <div class="profile">
+                    <div class="info">
+                        {% if user.is_authenticated %}
+                        <p>Hey, <b>{{ user.first_name }}</b></p>
+                        {% else %}
+                        <h2>Hel, {{ user.username }}</h2>
+                        {% endif %}
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const sideMenu = document.querySelector("aside");
+        const menuBtn = document.querySelector("#menu_btn");
+        const closeBtn = document.querySelector("#close-btn");
+        const themeToggler = document.querySelector(".theme-toggler");
+
+        // show sidebar
+        menuBtn.addEventListener('click', () => {
+        sideMenu.style.display = 'block';
+        })
+
+        //close sidebar
+        closeBtn.addEventListener('click', () => {
+        sideMenu.style.display = 'none';
+        })
+
+        // change theme
+        themeToggler.addEventListener('click', () => {
+        document.body.classList.toggle('dark-theme-variables');
+
+        themeToggler.querySelector('span:nth-child(1)').classList.toggle('active');
+        themeToggler.querySelector('span:nth-child(2)').classList.toggle('active');
+        })
+
+        // fill orders in table
+        orders.forEach(order => {
+        const tr = document.createElement('tr');
+        const trContent = `
+                    <td>${order.productName}</td>
+                    <td>${order.productNumber}</td>
+                    <td>${order.paymentStatus}</td>
+                    <td class="${order.shipping ==='Declined' ? 'danger' : order.shipping === 'pending' ? 'warning' : 'primary'}">${order.shipping}</td>
+                    <td class="primary">Details</td>
+                    `;
+        tr.innerHTML = trContent;
+        document.querySelector('table tbody').appendChild(tr);
+        })
+    </script>
+        
+</body>
+ </html>

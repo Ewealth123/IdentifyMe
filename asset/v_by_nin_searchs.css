@@ -1,0 +1,128 @@
+.search_result{
+    font-size: 15px;
+    margin-top: 15px;
+    border: 1px solid;
+}
+.search_result p{
+    border: 1px solid;
+}
+.main_result{
+    position: absolute;
+    
+    top: 600px;
+    left: 700px;
+    font-size: 15px;
+    border: 1px ;
+    width: 20%;
+}
+.main_result p{
+    height: 19px;
+    text-align: center;
+}
+.search_result_img{
+    display: flex;
+    padding: 10px;
+    float: left;
+    
+}
+.search_result_img2{
+    padding-left: 30px;
+    display: inline-block;
+}
+.frame{
+    border: 1px solid;
+    width: 40%;
+    margin-left: 300px;
+    margin-top: 10px;
+}
+.bvn_img{
+    width: 120px; 
+    height: 120px;
+}
+.bvn_img2{
+    width: 400px; 
+    height: 450px;
+}
+.main_result1{
+    position: absolute;
+    
+    top: 1030px;
+    left: 700px;
+    font-size: 15px;
+    border: 1px ;
+    width: 20%;
+}
+.main_result1 p{
+    height: 19px;
+    text-align: center;
+}
+.styled-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+.styled-table thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+}
+.styled-table th,
+.styled-table td {
+    padding: 12px 15px;
+}
+.styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
+.styled-table tbody tr.active-row {
+    font-weight: bold;
+    color: #009879;
+}
+@media screen and (max-width: 768px) {
+    .main_result{
+        position: absolute;
+        left: 190px;
+        top: 705px;
+        width: 70%;
+         
+    }
+    .main_result p{
+        height: 21px;
+        font-size: 12px;
+        width: 350px;
+    }
+    .search_result{
+        border: none;
+        
+    }
+    .search_result p{
+        border: none;
+        height: 21px;
+    }
+    .search_result_img{
+        display: flex;
+        padding: 10px;
+        float: left;
+        
+    }
+    .search_result_img2{
+        padding-left: 30px;
+    }
+    .frame{
+        margin-left: 0px;
+        width: 100%;
+    }
+    .bvn_img2{
+        width: 100%;
+    }
+}
