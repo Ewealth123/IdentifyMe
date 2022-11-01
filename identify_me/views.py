@@ -61,6 +61,13 @@ def v_by_ninw(request):
             else:
                 if vs == "NOT VERIFIED":
                     messages.info(request,"No Record Found", extra_tags='ans')
+                    math = int(nn) 
+                    i = int(100)
+                    done  =  math - i
+                    print(done)
+                    agent.objects.filter(email = user.username).update(wallet_bal = done)
+                    rr = agent.objects.filter(email= user.username).values("wallet_bal")
+                    ss=rr[0]['wallet_bal']
                 else:
                     if vs == "FAILED":
                         messages.info(request,"Third Party System is Unavailable", extra_tags='ans')
@@ -189,6 +196,13 @@ def v_by_phone(request):
             else:
                 if vs == "NOT VERIFIED":
                     messages.info(request,"No Record Found", extra_tags='ans')
+                    math = int(nn) 
+                    i = int(100)
+                    done  =  math - i
+                    print(done)
+                    agent.objects.filter(email = user.username).update(wallet_bal = done)
+                    rr = agent.objects.filter(email= user.username).values("wallet_bal")
+                    ss=rr[0]['wallet_bal']
                 else:
                     if vs == "FAILED":
                         messages.info(request,"Third Party System is Unavailable", extra_tags='ans')
@@ -304,6 +318,13 @@ def v_by_vnin(request):
             else:
                 if vs == "NOT VERIFIED":
                     messages.info(request,"No Record Found", extra_tags='ans')
+                    math = int(nn) 
+                    i = int(100)
+                    done  =  math - i
+                    print(done)
+                    agent.objects.filter(email = user.username).update(wallet_bal = done)
+                    rr = agent.objects.filter(email= user.username).values("wallet_bal")
+                    ss=rr[0]['wallet_bal']
                 else:
                     if vs == "FAILED":
                         messages.info(request,"Third Party System is Unavailable", extra_tags='ans')
@@ -522,6 +543,13 @@ def bvn(request):
             else:
                 if vs == "NOT VERIFIED":
                     messages.info(request,"No Record Found", extra_tags='ans')
+                    math = int(nn) 
+                    i = int(100)
+                    done  =  math - i
+                    print(done)
+                    agent.objects.filter(email = user.username).update(wallet_bal = done)
+                    rr = agent.objects.filter(email= user.username).values("wallet_bal")
+                    ss=rr[0]['wallet_bal']
                 else:
                     if vs == "FAILED":
                         messages.info(request,"Third Party System is Unavailable", extra_tags='ans')
@@ -607,6 +635,13 @@ def int_pass(request):
             else:
                 if vs == "NOT VERIFIED":
                     messages.info(request,"No Record Found", extra_tags='ans')
+                    math = int(nn) 
+                    i = int(100)
+                    done  =  math - i
+                    print(done)
+                    agent.objects.filter(email = user.username).update(wallet_bal = done)
+                    rr = agent.objects.filter(email= user.username).values("wallet_bal")
+                    ss=rr[0]['wallet_bal']
                 else:
                     if vs == "FAILED":
                         messages.info(request,"Third Party System is Unavailable", extra_tags='ans')
