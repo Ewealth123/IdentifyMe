@@ -15,7 +15,7 @@ from . import forms
 from django.http import HttpResponse
 from django.template.loader import get_template
 from xhtml2pdf import pisa
-
+from django.contrib.auth.models import User
 
 
 # Create your views here.
@@ -596,6 +596,27 @@ def dashboard(request):
     historys = Payment.objects.filter(email = user.username).all().values()
     pay = historys
     return render(request, 'dashboard.html',{"user":user, "wallet": nn,"trans": pay})
+
+
+def Profile(request):
+    user = request.user
+    profile_obj = agent.objects.filter(email = user.username).first()
+    context = { 'user_id' : profile_obj.email}
+    if  request.method == 'POST':
+            new_password =  request.POST.get('new_pass')
+            con_password = request.POST.get('con_pass')
+            user_id = request.POST.get('user_id')
+            
+            if new_password != con_password:
+                messages.info(request, 'Password mismatch. ')
+                return redirect('change-password')
+            
+            user_obj = User.objects.get(username=user_id)
+            user_obj.set_password(new_password)
+            user_obj.save()
+            messages.info(request, 'Password changed successfully. ')
+            return redirect('login')
+    return render(request, 'profile.html',context)
 
 def int_pass(request):
     user = request.user

@@ -17,5 +17,6 @@ urlpatterns = [
     path('admin', admin.site.urls),
     path('<str:ref>', views.verify_payment, name = "verify-payment"),
     path('slip/',views.pdf, name="slip"),
+    path('profile/',views.Profile, name="profile"),
     
 ]

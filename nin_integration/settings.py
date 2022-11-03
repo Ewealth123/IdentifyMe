@@ -63,7 +63,7 @@ LOGGING = {
     }
 }
 
-ALLOWED_HOSTS = ['www.identityme.africa','identityme.africa','mail.identityme.africa']
+ALLOWED_HOSTS = ['www.identityme.africa','identityme.africa','mail.identityme.africa', '127.0.0.1']
 
 
 # Application definition
@@ -115,15 +115,15 @@ WSGI_APPLICATION = 'nin_integration.wsgi.application'
 
 
 # Database
-# https://docs.djangoproject.com/en/4.1/ref/settings/#databases
+#https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-#DATABASES = {
-    #'default': {
-        #'ENGINE': 'django.db.backends.sqlite3',
-        #'NAME': BASE_DIR/ 'db.sqlite3',
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR/ 'db.sqlite3',
         
-    #}
-#}
+#     }
+# }
 
 
 DATABASES = {
@@ -194,7 +194,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'igbonekwuifeanyi18@gmail.com'
-EMAIL_HOST_PASSWORD = 'ihplayxyzudlmmqv'
+EMAIL_HOST_PASSWORD = 'ozipjbeazagojicm'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
