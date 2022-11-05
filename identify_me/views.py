@@ -299,12 +299,13 @@ def v_by_vnin(request):
 
             payload = {
                 "searchParameter": me,
-                "verificationType": "NIN-SEARCH"
+                "verificationType": "V-NIN",
+                "countryCode": "NG",
             }
             headers = {
                 "accept": "application/json",
                 "userid": "1647784769854",
-                "apiKey": "OiJ8EYBw98vaDWClMZLO",
+                "apiKey": "YWlmjzRG333c2pjap6Xr",
                 "content-type": "application/json"
             }
 
@@ -341,23 +342,23 @@ def v_by_vnin(request):
                         nin_firstname =ress[0]['firstname']
                         nin_middlename =ress[0]['middlename']
                         nin_gender =ress[0]['gender']
-                        nin_dateofbirth =ress[0]['birthdate']
-                        nin_nin =ress[0]['nin']
-                        nin_phonenumber =ress[0]['telephoneno']
-                        nin_email =ress[0]['heigth']
-                        nin_trackingid =ress[0]['trackingId']
-                        nin_town =ress[0]['residence_Town']
-                        nin_address =ress[0]['residence_AdressLine1']
-                        nin_residencelga =ress[0]['residence_lga']
-                        nin_residencestate =ress[0]['residence_state']
-                        nin_stateoforigin =ress[0]['self_origin_state']
-                        nin_noksurname =ress[0]['nok_surname']
-                        nin_nokfirstname =ress[0]['nok_firstname']
-                        nin_nokmiddlename =ress[0]['nok_middlename']
-                        nin_noktown =ress[0]['nok_town']
-                        nin_nokstate =ress[0]['nok_state']
-                        nin_country =ress[0]['birthcountry']
-                        nin_title =ress[0]['title']
+                        nin_dateofbirth =ress[0]['dateOfBirth']
+                        nin_nin =ress[0]['vnin']
+                        nin_phonenumber =ress[0]['trustedNumber']
+                        nin_agentid =ress[0]['agentID']
+                        nin_userid =ress[0]['userid']
+                        # nin_town =ress[0]['residence_Town']
+                        # nin_address =ress[0]['residence_AdressLine1']
+                        # nin_residencelga =ress[0]['residence_lga']
+                        # nin_residencestate =ress[0]['residence_state']
+                        # nin_stateoforigin =ress[0]['self_origin_state']
+                        # nin_noksurname =ress[0]['nok_surname']
+                        # nin_nokfirstname =ress[0]['nok_firstname']
+                        # nin_nokmiddlename =ress[0]['nok_middlename']
+                        # nin_noktown =ress[0]['nok_town']
+                        # nin_nokstate =ress[0]['nok_state']
+                        # nin_country =ress[0]['birthcountry']
+                        # nin_title =ress[0]['title']
                         
                         messages.info(request,nin_Surname,extra_tags='m1')
                         messages.info(request,nin_firstname,extra_tags='m2')
@@ -366,22 +367,22 @@ def v_by_vnin(request):
                         messages.info(request,nin_dateofbirth,extra_tags='m5')
                         messages.info(request,nin_nin,extra_tags='m6')
                         messages.info(request,nin_phonenumber,extra_tags='m7')
-                        messages.info(request,nin_email,extra_tags='m8')
-                        messages.info(request,nin_trackingid,extra_tags='m9')
-                        messages.info(request,nin_town,extra_tags='m10')
-                        messages.info(request,nin_address,extra_tags='m11')
-                        messages.info(request,nin_residencelga,extra_tags='m12')
-                        messages.info(request,nin_residencestate,extra_tags='m13')
-                        messages.info(request,nin_stateoforigin,extra_tags='m14')
-                        messages.info(request,nin_noksurname,extra_tags='m15')
-                        messages.info(request,nin_nokfirstname,extra_tags='m16')
-                        messages.info(request,nin_nokmiddlename,extra_tags='m17')
-                        messages.info(request,nin_noktown,extra_tags='m18')
-                        messages.info(request,nin_nokstate,extra_tags='m19')
-                        messages.info(request,nin_country,extra_tags='m20')
-                        messages.info(request,nin_title,extra_tags='m21')
+                        messages.info(request,nin_agentid,extra_tags='m8')
+                        messages.info(request,nin_userid,extra_tags='m9')
+                        # messages.info(request,nin_town,extra_tags='m10')
+                        # messages.info(request,nin_address,extra_tags='m11')
+                        # messages.info(request,nin_residencelga,extra_tags='m12')
+                        # messages.info(request,nin_residencestate,extra_tags='m13')
+                        # messages.info(request,nin_stateoforigin,extra_tags='m14')
+                        # messages.info(request,nin_noksurname,extra_tags='m15')
+                        # messages.info(request,nin_nokfirstname,extra_tags='m16')
+                        # messages.info(request,nin_nokmiddlename,extra_tags='m17')
+                        # messages.info(request,nin_noktown,extra_tags='m18')
+                        # messages.info(request,nin_nokstate,extra_tags='m19')
+                        # messages.info(request,nin_country,extra_tags='m20')
+                        # messages.info(request,nin_title,extra_tags='m21')
                         
-                        #image 
+                        # #image 
                         photo = ress[0]['photo']
                         byte_data =f"'{photo}'"
                         b= base64.b64decode(byte_data)
@@ -392,17 +393,17 @@ def v_by_vnin(request):
                         end = base64.b64encode(data.getvalue())
                         img  = end.decode('utf-8')
                         
-                        #sig  
-                        photo1 = ress[0]['signature']
-                        byte_data1 =f"'{photo1}'"
-                        b1= base64.b64decode(byte_data1)
-                        data1 = io.BytesIO(b1)
-                        data1.seek(0)
-                        pp1 = Image.open(data1)
-                        pp1.save(data1, "PNG")
-                        end1 = base64.b64encode(data1.getvalue())
-                        img1  = end1.decode('utf-8')
-                        return render(request,'v_by_ninw.html',{"img_data":img,"img_data1":img1,"wallet":ss})
+                        # #sig  
+                        # photo1 = ress[0]['signature']
+                        # byte_data1 =f"'{photo1}'"
+                        # b1= base64.b64decode(byte_data1)
+                        # data1 = io.BytesIO(b1)
+                        # data1.seek(0)
+                        # pp1 = Image.open(data1)
+                        # pp1.save(data1, "PNG") 
+                        # end1 = base64.b64encode(data1.getvalue())
+                        # img1  = end1.decode('utf-8')
+                        return render(request,'v_by_ninw.html',{"wallet":ss, "img_data":img})#,"img_data1":img1,
                     
     return render(request, 'v_by_vnin.html',{"wallet":nn})
 

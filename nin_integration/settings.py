@@ -117,29 +117,29 @@ WSGI_APPLICATION = 'nin_integration.wsgi.application'
 # Database
 #https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR/ 'db.sqlite3',
-        
-#     }
-# }
-
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'identify_identity_data',
-        'USER': 'identify_identity',
-        'PASSWORD': 'Igbonekwu1#',
-        'HOST': 'localhost',
-        'PORT': '3306',
-        'OPTIONS': {
-            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
-        }
-
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR/ 'db.sqlite3',
+        
     }
 }
+
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'identify_identity_data',
+#         'USER': 'identify_identity',
+#         'PASSWORD': 'Igbonekwu1#',
+#         'HOST': 'localhost',
+#         'PORT': '3306',
+#         'OPTIONS': {
+#             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
+#         }
+
+#     }
+# }
 
 
 # Password validation
@@ -193,8 +193,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 #SMTP CONFIGURATION
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'igbonekwuifeanyi18@gmail.com'
-EMAIL_HOST_PASSWORD = 'ozipjbeazagojicm'
+EMAIL_HOST_USER = 'identifymeofiicial@gmail.com'
+EMAIL_HOST_PASSWORD = 'hdwdgangejeedqtn'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 

@@ -5,6 +5,7 @@ from django.contrib import admin
 
 urlpatterns = [
     path('', views.index_nin, name="index_nin"),
+    path('profile',views.Profile, name="profile"),
     path('v_by_ninw',views.v_by_ninw, name="v_by_ninw"),
     path('v_by_phone',views.v_by_phone, name="v_by_phone"),
     path('v_by_vnin',views.v_by_vnin, name='v_by_vnin'),
@@ -17,6 +18,6 @@ urlpatterns = [
     path('admin', admin.site.urls),
     path('<str:ref>', views.verify_payment, name = "verify-payment"),
     path('slip/',views.pdf, name="slip"),
-    path('profile/',views.Profile, name="profile"),
+    
     
 ]

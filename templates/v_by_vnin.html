@@ -53,10 +53,11 @@
                         </div>
             
                         <ul class="sub-menu">
+                            <li><a href="v_by_vnin">Virtual NIN Full Details</a></li>
                             <li><a href="v_by_ninw">Verification By NIN</a></li>
                             <li><a href="v_by_phone">Verification By Phone Number</a></li>
                             <li><a href="v_by_ninw">NIN Validity Check</a></li>
-                            <li><a href="v_by_vnin">Virtual NIN Full Details</a></li>
+                            
                         </ul>
                     </li>
                     <li>
@@ -90,9 +91,17 @@
                     </li>
                     <li>
                         <div class="icon-link">
-                            <a href="profile/">
+                            <a href="profile">
                                 <i class='bx bx-cog' ></i>
                                 <span class="link_name">My Profile</span> 
+                            </a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="icon-link">
+                            <a href="account/logout">
+                                <i class='bx bx-log-out'></i>
+                                <span class="link_name">Logout</span> 
                             </a>
                         </div>
                     </li>
@@ -130,6 +139,7 @@
                     {%endif%}
                 {% endfor %}
             </div>
+            <p>Dial [*346*3*Your NIN*951641#] To generate your vNIN via USSD  or log into the nimc Mobile app and input our agent ID: <b style = "color:black;">951641</b>    <a style = "color:blue;" href = "https://nimc.gov.ng/nin-tokenization/">Learn More </a> </p>
             <div class="david">
                 <div class="transfer">
                     <form action="" method="">
@@ -140,108 +150,32 @@
                     </form>
                 </div>
             </div>
-            <div class="search_result">
+            <div class="search_result_vnin">
                 <h3> Search Result</h3>
                 <p>Surname :</p>
                 <p>First Name :</p>
                 <p>Middle Name :</p>
                 <p>Gender :</p>
                 <p>Date Of birth :</p>
-                <p>NIN :</p>
+                <p>V-NIN :</p>
                 <p>Phone Number :</p>
-                <p>Email Address :</p>
-                <p>Tracking Id :</p>
-                <p>Town :</p>
-                <p>Address :</p>
-                <p>Address LGA :</p>
-                <p>Address State :</p>
-                <p>State of origin :</p>
-                <p>Next of kin surname :</p>
-                <p>Next of kin firstname :</p>
-                <p>Next of kin middlename:</p>
-                <p>Next of kin town :</p>
-                <p>Next of kin state :</p>
-                <p>Country :</p>
-                <p>Title :</p>
+                <p>Agent Id :</p>
+                <p>User Id :</p>
             </div>
-            <div class="main_result">
-                {% for message in messages %}
-                    {%if "m1" in message.tags %}
-                        <p>{{message}}</p>
-                    
-                
-                    {%elif "m2" in message.tags %}
-                        <p>{{message}}</p>
-               
-                    {%elif "m3" in message.tags %}
-                        <p>{{message}}</p>
-                    
-                    {%elif "m4" in message.tags %}
-                        <p>{{message}}</p>
-                    
-                
-                    {%elif "m5" in message.tags %}
-                        <p>{{message}}</p>
-                    
-                
-                    {%elif "m6" in message.tags %}
-                        <p>{{message}}</p>
-                    
-                
-                    {%elif "m7" in message.tags %}
-                        <p>{{message}}</p>
-                    
-                
-                    {%elif "m8" in message.tags %}
-                        <p>{{message}}</p>
-                    
-                
-                    {%elif "m9" in message.tags %}
-                        <p>{{message}}</p>
-                    
-                
-                    {%elif "m10" in message.tags %}
-                        <p>{{message}}</p>
-                    
-                    {%elif "m11" in message.tags %}
-                        <p>{{message}}</p>
-                
-                    {%elif "m12" in message.tags %}
-                        <p>{{message}}</p>
-                    
-                
-                    {%elif "m13" in message.tags %}
-                        <p>{{message}}</p>
-                    
-               
-                    {%elif "m14" in message.tags %}
-                        <p>{{message}}</p>
-                    
-                
-                    {%elif "m15" in message.tags %}
-                        <p>{{message}}</p>
-                    
-                    {%elif "m16" in message.tags %}
-                        <p>{{message}}</p>
-                    
-                    {%elif "m17" in message.tags %}
-                        <p>{{message}}</p>
-                    
-                    {%elif "m18" in message.tags %}
-                        <p>{{message}}</p>
-                    
-                    {%elif "m19" in message.tags %}
-                        <p>{{message}}</p>
-                    
-                    {%elif "m20" in message.tags %}
-                        <p>{{message}}</p>
-                    
-                    {%elif "m20" in message.tags %}
-                        <p>{{message}}</p>
-                    {%endif%}
-                {% endfor %}
-                
-            </div>  
+            <div class="main_result_vnin">
+                <p>Surname :</p>
+                <p>First Name :</p>
+                <p>Middle Name :</p>
+                <p>Gender :</p>
+                <p>Date Of birth :</p>
+                <p>V-NIN :</p>
+                <p>Phone Number :</p>
+                <p>Agent Id :</p>
+                <p>User Id :</p>
+            </div>
+            <div class="search_result_img">
+                <img style = "width: 120px; height: 120px;" src="data:image/png;base64,{{img_data}}"/>
+            </div>   
         </main>
         <!--   End of Main -->
         <div class="right">
