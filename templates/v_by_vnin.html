@@ -163,15 +163,41 @@
                 <p>User Id :</p>
             </div>
             <div class="main_result_vnin">
-                <p>Surname :</p>
-                <p>First Name :</p>
-                <p>Middle Name :</p>
-                <p>Gender :</p>
-                <p>Date Of birth :</p>
-                <p>V-NIN :</p>
-                <p>Phone Number :</p>
-                <p>Agent Id :</p>
-                <p>User Id :</p>
+                {% for message in messages %}
+                    {%if "m1" in message.tags %}
+                        <p>{{message}}</p>
+                    
+                
+                    {%elif "m2" in message.tags %}
+                        <p>{{message}}</p>
+               
+                    {%elif "m3" in message.tags %}
+                        <p>{{message}}</p>
+                    
+                    {%elif "m4" in message.tags %}
+                        <p>{{message}}</p>
+                    
+                
+                    {%elif "m5" in message.tags %}
+                        <p>{{message}}</p>
+                    
+                
+                    {%elif "m6" in message.tags %}
+                        <p>{{message}}</p>
+                    
+                
+                    {%elif "m7" in message.tags %}
+                        <p>{{message}}</p>
+                    
+                
+                    {%elif "m8" in message.tags %}
+                        <p>{{message}}</p>
+                    
+                
+                    {%elif "m9" in message.tags %}
+                        <p>{{message}}</p>
+                    {%endif%}
+                {% endfor %}
             </div>
             <div class="search_result_img">
                 <img style = "width: 120px; height: 120px;" src="data:image/png;base64,{{img_data}}"/>
