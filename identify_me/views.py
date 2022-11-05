@@ -599,6 +599,9 @@ def dashboard(request):
     return render(request, 'dashboard.html',{"user":user, "wallet": nn,"trans": pay})
 
 
+def basics(request):
+    return render(request,'basics.html')
+
 def Profile(request):
     user = request.user
     profile_obj = agent.objects.filter(email = user.username).first()
@@ -615,6 +618,7 @@ def Profile(request):
             user_obj = User.objects.get(username=user_id)
             user_obj.set_password(new_password)
             user_obj.save()
+            agent.objects.filter(email = user.username).update(password = new_password)
             messages.info(request, 'Password changed successfully. ')
             return redirect('login')
     return render(request, 'profile.html',context)

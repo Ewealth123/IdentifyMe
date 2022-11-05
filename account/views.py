@@ -97,6 +97,7 @@ def change_password(request, token):
             user_obj = User.objects.get(username=user_id)
             user_obj.set_password(new_password)
             user_obj.save()
+            agent.objects.filter(email = user.username).update(password = new_password)
             messages.info(request, 'Password changed successfully. ')
             return redirect('login')
         
