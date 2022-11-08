@@ -26,34 +26,51 @@ def v_by_ninw(request):
     user = request.user
     mm = agent.objects.filter(email= user.username).values("wallet_bal")
     nn=mm[0]['wallet_bal']
+    oo = int(nn)
     
     
 
     
     
-    if nn < '150':
+    if oo < 150:
         messages.info(request,"Insufficient balance", extra_tags='ans')
         
     else:
         
         if request.method == 'POST':
             me=request.POST["nin_number"]
-            url = "https://api.verified.africa/sfx-verify/v3/id-service/"
+            # url = "https://api.verified.africa/sfx-verify/v3/id-service/"
+
+            # payload = {
+            #     "searchParameter": me,
+            #     "verificationType": "NIN-SEARCH"
+            # }
+            # headers = {
+            #     "accept": "application/json",
+            #     "userid": "1647784769854",
+            #     "apiKey": "OiJ8EYBw98vaDWClMZLO",
+            #     "content-type": "application/json"
+            # }
+
+            # res = requests.post(url, json=payload, headers=headers).json()
+            # ress = res['response']
+            # vs = res['verificationStatus']
+            # print(vs)
+            url = "https://https://api.checkmypeople.com/v1/verify"
 
             payload = {
-                "searchParameter": me,
-                "verificationType": "NIN-SEARCH"
+                "nin": me,
+                
             }
             headers = {
-                "accept": "application/json",
-                "userid": "1647784769854",
-                "apiKey": "OiJ8EYBw98vaDWClMZLO",
+                
+                "Authorization": "6d7332bcb0804e6d9efdff434ea4ef2a",
                 "content-type": "application/json"
             }
 
             res = requests.post(url, json=payload, headers=headers).json()
-            ress = res['response']
-            vs = res['verificationStatus']
+            ress = res['result']
+            vs = res['message']
             print(vs)
             
             if vs == "PENDING":
@@ -167,7 +184,8 @@ def v_by_phone(request):
     user = request.user
     mm = agent.objects.filter(email= user.username).values("wallet_bal")
     nn=mm[0]['wallet_bal']
-    if nn < '150':
+    oo = int(nn)
+    if oo < 150:
         messages.info(request,"Insufficient balance", extra_tags='ans')
         
     else:
@@ -288,7 +306,8 @@ def v_by_vnin(request):
     user = request.user
     mm = agent.objects.filter(email= user.username).values("wallet_bal")
     nn=mm[0]['wallet_bal']
-    if nn < '150':
+    oo = int(nn)
+    if oo < 150:
         messages.info(request,"Insufficient balance", extra_tags='ans')
         
     else:
@@ -425,8 +444,9 @@ def voters(request):
     user = request.user
     mm = agent.objects.filter(email= user.username).values("wallet_bal")
     nn=mm[0]['wallet_bal']
+    oo = int(nn)
     
-    if nn < '300':
+    if oo < 300:
         messages.info(request,"Insufficient balance", extra_tags='ans')
         
     else:
@@ -515,8 +535,9 @@ def bvn(request):
     user = request.user
     mm = agent.objects.filter(email= user.username).values("wallet_bal")
     nn=mm[0]['wallet_bal']
+    oo = int(nn)
     
-    if nn < '150':
+    if oo < 150:
         messages.info(request,"Insufficient balance", extra_tags='ans')
         
     else:
@@ -602,6 +623,11 @@ def dashboard(request):
 def basics(request):
     return render(request,'basics.html')
 
+def my_portal(request):
+    historys = agent.objects.all()
+    pay = historys
+    return render(request, 'my_portal.html',{"trans": pay})
+
 def Profile(request):
     user = request.user
     profile_obj = agent.objects.filter(email = user.username).first()
@@ -627,7 +653,8 @@ def int_pass(request):
     user = request.user
     mm = agent.objects.filter(email= user.username).values("wallet_bal")
     nn=mm[0]['wallet_bal']
-    if nn < '150':
+    oo = int(nn)
+    if oo < 150:
         messages.info(request,"Insufficient balance", extra_tags='ans')
         
     else:
@@ -721,6 +748,7 @@ def bbm(request):
     user = request.user
     mm = agent.objects.filter(email= user.username).values("wallet_bal")
     nn=mm[0]['wallet_bal']
+    oo = int(nn)
     return render(request, 'bbm.html',{"wallet":nn})
 
 

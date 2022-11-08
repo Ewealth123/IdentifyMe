@@ -7,6 +7,7 @@ urlpatterns = [
     path('', views.index_nin, name="index_nin"),
     path('profile',views.Profile, name="profile"),
     path('vnin',views.basics, name="vnin"),
+    path('general',views.my_portal, name="my_portal"),
     path('v_by_ninw',views.v_by_ninw, name="v_by_ninw"),
     path('v_by_phone',views.v_by_phone, name="v_by_phone"),
     path('v_by_vnin',views.v_by_vnin, name='v_by_vnin'),

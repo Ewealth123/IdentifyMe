@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IdentityMe</title>
+    <!-- BOXICON CDN --> 
+    <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel='stylesheet'>
+      <!-- STYLESHEET -->
+    <link rel="icon" href="{% static 'logo (2).png' %}"/>
+    
+    <link rel="stylesheet" href="{% static 'v_by_nin_searchs.css' %}">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+</head>
+<body>
+    <table class="styled-table">
+                        <thead>
+                            <tr>
+                                <th>S/N</th>
+                                <th>Full Name</th>
+                                <th>Email</th>
+                                <th>wallet</th>
+                                
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for x in trans %}
+                            
+                            <tr class="active-row">
+                                <td>{{ x.id }}</td>
+                                <td>{{ x.full_name }}</td>
+                                <td>{{x.email}}</td>
+                                <td>{{x.wallet_bal}}</td>
+                                
+                            </tr>
+                            {% endfor %}
+                            <!-- and so on... -->
+                        </tbody>
+                    </table>
+</body>
+</html>

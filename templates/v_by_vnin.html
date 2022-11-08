@@ -143,9 +143,10 @@
             <div class="david">
                 <div class="transfer">
                     <form action="" method="">
+                        {% csrf_token %}
                         <i class='bx bxs-wallet'></i>
                         <h2 class="client">VNIN Number</h2>
-                        <input type="text"  placeholder="1234567789" required>
+                        <input type="text" name='nin_number' placeholder="1234567789" required>
                         <button>Search</button>
                     </form>
                 </div>

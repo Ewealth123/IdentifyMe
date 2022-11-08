@@ -194,13 +194,13 @@ MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'identifymeofiicial@gmail.com'
-EMAIL_HOST_PASSWORD = 'hdwdgangejeedqtn'
+EMAIL_HOST_PASSWORD = 'hdwdgange'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-PAYSTACK_SECRET_KEY = 'sk_live_b00d207f536f495428a5a6033718b817427a3fe5'
-PAYSTACK_PUBLIC_KEY = 'pk_live_0576153b0d6423a8a4bb21535904acbb0e7f4e59'
+PAYSTACK_SECRET_KEY = 'sk_live_b00d207f536f495428a5'
+PAYSTACK_PUBLIC_KEY = 'pk_live_0576153b0d6423a8a4bb'
 
 #django_heroku.settings(locals())
