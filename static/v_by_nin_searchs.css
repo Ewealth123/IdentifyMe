@@ -19,6 +19,19 @@
     height: 19px;
     text-align: center;
 }
+.main_result1{
+    position: absolute;
+    
+    margin-top: 15px;
+    left: 700px;
+    font-size: 15px;
+    border: 1px ;
+    width: 20%;
+}
+.main_result1 p{
+    height: 19px;
+    text-align: center;
+}
 .search_result_vnin{
     font-size: 15px;
     margin-top: 15px;
@@ -118,6 +131,18 @@
          
     }
     .main_result p{
+        height: 21px;
+        font-size: 12px;
+        width: 350px;
+    }
+    .main_result1{
+        position: absolute;
+        left: 190px;
+        top: 1150px;
+        width: 70%;
+         
+    }
+    .main_result1 p{
         height: 21px;
         font-size: 12px;
         width: 350px;

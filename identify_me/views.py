@@ -729,18 +729,19 @@ def int_pass(request):
                         messages.info(request,pass_issue_date,extra_tags='m9')
                         messages.info(request,pass_ex_date,extra_tags='m10')
                         
-                        #photo12 = ress['photo']
-                        #print(photo12)
-                        #byte_data12 =f"'{photo12}'"
-                        #b12= base64.b64decode(byte_data12)
-                        #print(b12)
-                        #data12 = io.BytesIO(b12)
-                        #data12.seek(0)
-                        #pp12 = Image.open(data12)
-                        #pp12.save(data12, "PNG")
-                        #end12 = base64.b64encode(data12.getvalue())
-                        #img12  = end12.decode('utf-8')
-                        return render(request,'int_pass.html',{"wallet":ss})
+                        photo12 = ress['photo']
+                        print(photo12)
+                        photo13 = photo12.replace('data:image/jpg;base64,', '')
+                        byte_data12 =f"'{photo13}'"
+                        b12= base64.b64decode(byte_data12)
+                        print(b12)
+                        data12 = io.BytesIO(b12)
+                        data12.seek(0)
+                        pp12 = Image.open(data12)
+                        pp12.save(data12, "PNG")
+                        end12 = base64.b64encode(data12.getvalue())
+                        img12  = end12.decode('utf-8')
+                        return render(request,'int_pass.html',{"wallet":ss,"img_data":img12})
                         
     return render(request, 'int_pass.html',{"wallet":nn})
 

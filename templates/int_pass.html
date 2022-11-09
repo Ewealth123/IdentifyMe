@@ -178,7 +178,6 @@
                 <p>Gender :</p>
                 <p>Date Of birth :</p>
                 <p>Refrence Id :</p>
-                <p>Phone Number :</p>
                 <p>Issued At :</p>
                 <p>Issue Date :</p>
                 <p>Expiry Date :</p>
@@ -208,10 +207,6 @@
                         <p>{{message}}</p>
                     
                 
-                    {%elif "m7" in message.tags %}
-                        <p>{{message}}</p>
-                    
-                
                     {%elif "m8" in message.tags %}
                         <p>{{message}}</p>
                     
@@ -229,7 +224,7 @@
             </div>
             <div class="search_result_img">
                 <img style = "width: 120px; height: 120px;" src="data:image/png;base64,{{img_data}}"/>
-                <p style= "color: red;"> if images does not dispay, it's is an internal error and the team is working very hard to ressolve it</p>
+                
             </div>
         </main>
         <!--   End of Main -->
