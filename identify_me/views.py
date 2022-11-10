@@ -478,6 +478,13 @@ def voters(request):
             else:
                 if vs == "NOT VERIFIED":
                     messages.info(request,"No Record Found", extra_tags='ans')
+                    math = int(nn) 
+                    i = int(200)
+                    done  =  math - i
+                    print(done)
+                    agent.objects.filter(email = user.username).update(wallet_bal = done)
+                    rr = agent.objects.filter(email= user.username).values("wallet_bal")
+                    ss=rr[0]['wallet_bal']
                 else:
                     if vs == "FAILED":
                         messages.info(request,"Third Party System is Unavailable", extra_tags='ans')
@@ -489,7 +496,49 @@ def voters(request):
                         agent.objects.filter(email = user.username).update(wallet_bal = done)
                         rr = agent.objects.filter(email= user.username).values("wallet_bal")
                         ss=rr[0]['wallet_bal']
-                        pass
+                        lastname =ress[0]['last_name']
+                        firstname =ress[0]['first_name']
+                        full_name =ress[0]['full_name']
+                        gender =ress[0]['gender']
+                        yearofbirth =ress[0]['yob']
+                        id_number =ress[0]['id_number']
+                        phonenumber =ress[0]['phone_number']
+                        occupation =ress[0]['occupation']
+                        vin =ress[0]['vin']
+                        phone_number2 =ress[0]['phone_number2']
+                        address =ress[0]['address']
+                        lga =ress[0]['lga']
+                        state =ress[0]['state']
+                        expiration_date =ress[0]['expiration_date']
+                        
+                        
+                        messages.info(request,lastname,extra_tags='m1')
+                        messages.info(request,firstname,extra_tags='m2')
+                        messages.info(request,full_name,extra_tags='m3')
+                        messages.info(request,gender,extra_tags='m4')
+                        messages.info(request,yearofbirth,extra_tags='m5')
+                        messages.info(request,id_number,extra_tags='m6')
+                        messages.info(request,phonenumber,extra_tags='m7')
+                        messages.info(request,occupation,extra_tags='m8')
+                        messages.info(request,vin,extra_tags='m9')
+                        messages.info(request,phone_number2,extra_tags='m10')
+                        messages.info(request,address,extra_tags='m11')
+                        messages.info(request,lga,extra_tags='m12')
+                        messages.info(request,state,extra_tags='m13')
+                        messages.info(request,expiration_date,extra_tags='m14')
+                        
+                        #image 
+                        photo = ress[0]['photo']
+                        photo13 = photo.replace('data:image/jpg;base64,', '')
+                        byte_data =f"'{photo13}'"
+                        b= base64.b64decode(byte_data)
+                        data = io.BytesIO(b)
+                        data.seek(0)
+                        pp = Image.open(data)
+                        pp.save(data, "PNG")
+                        end = base64.b64encode(data.getvalue())
+                        img  = end.decode('utf-8')
+                        return render(request,'voters.html',{"img_data":img,"wallet":ss})
     
     return render(request, 'voters.html',{"wallet":nn})
 
@@ -529,6 +578,113 @@ def pdf(request):
     #return response
     return render(request, 'Nimc.html',context)
     
+
+
+def tin(request):
+    user = request.user
+    mm = agent.objects.filter(email= user.username).values("wallet_bal")
+    nn=mm[0]['wallet_bal']
+    oo = int(nn)
+    
+    if oo < 150:
+        messages.info(request,"Insufficient balance", extra_tags='ans')
+        
+    else:
+        
+        if request.method == 'POST':
+            me=request.POST["tin_number"]
+            url = "https://api.verified.africa/sfx-verify/v3/id-service/"
+
+            payload = {
+                "searchParameter": me,
+                "verificationType": "TIN-FULL-DETAIL-VERIFICATION"
+            }
+            headers = {
+                "accept": "application/json",
+                "userid": "1647784769854",
+                "apiKey": "qSGCtHP4XYF4uLgW39n7",
+                "content-type": "application/json"
+            }
+
+            res = requests.post(url, json=payload, headers=headers).json()
+            ress = res['response']
+            vs = res['verificationStatus']
+            print(ress)
+            print(res)
+            print(vs)
+            if vs == "PENDING":
+                messages.info(request,"Something unexpected happened", extra_tags='ans')
+            else:
+                if vs == "NOT VERIFIED":
+                    messages.info(request,"No Record Found", extra_tags='ans')
+                    math = int(nn) 
+                    i = int(100)
+                    done  =  math - i
+                    print(done)
+                    agent.objects.filter(email = user.username).update(wallet_bal = done)
+                    rr = agent.objects.filter(email= user.username).values("wallet_bal")
+                    ss=rr[0]['wallet_bal']
+                else:
+                    if vs == "FAILED":
+                        messages.info(request,"Third Party System is Unavailable", extra_tags='ans')
+                    else:
+                        math = int(nn) 
+                        i = int(150)
+                        done  =  math - i
+                        print(done)
+                        agent.objects.filter(email = user.username).update(wallet_bal = done)
+                        rr = agent.objects.filter(email= user.username).values("wallet_bal")
+                        ss=rr[0]['wallet_bal']
+                        
+                        fullname =ress[0]['full_name']
+                        typeofentity =ress[0]['typeofentity']
+                        email =ress[0]['email']
+                        gender =ress[0]['gender']
+                        yearofbirth =ress[0]['dob']
+                        id_number =ress[0]['id_number']
+                        phonenumber =ress[0]['phone_number']
+                        taxoffice =ress[0]['tax_office']
+                        cac =ress[0]['cac_reg_no']
+                        phone_number2 =ress[0]['phone_number2']
+                        address =ress[0]['address']
+                        taxpayername =ress[0]['tax_payer_name']
+                        type_of_entity =ress[0]['type_of_entity']
+                        expiration_date =ress[0]['expiration_date']
+                        
+                        
+                        messages.info(request,fullname,extra_tags='m1')
+                        messages.info(request,typeofentity,extra_tags='m2')
+                        messages.info(request,email,extra_tags='m3')
+                        messages.info(request,gender,extra_tags='m4')
+                        messages.info(request,yearofbirth,extra_tags='m5')
+                        messages.info(request,id_number,extra_tags='m6')
+                        messages.info(request,phonenumber,extra_tags='m7')
+                        messages.info(request,taxoffice,extra_tags='m8')
+                        messages.info(request,cac,extra_tags='m9')
+                        messages.info(request,phone_number2,extra_tags='m10')
+                        messages.info(request,address,extra_tags='m11')
+                        messages.info(request,taxpayername,extra_tags='m12')
+                        messages.info(request,type_of_entity,extra_tags='m13')
+                        messages.info(request,expiration_date,extra_tags='m14')
+                        
+                        #image 
+                        photo = ress[0]['photo']
+                        photo13 = photo.replace('data:image/jpg;base64,', '')
+                        byte_data =f"'{photo13}'"
+                        b= base64.b64decode(byte_data)
+                        data = io.BytesIO(b)
+                        data.seek(0)
+                        pp = Image.open(data)
+                        pp.save(data, "PNG")
+                        end = base64.b64encode(data.getvalue())
+                        img  = end.decode('utf-8')
+                        return render(request,'tin.html',{"img_data":img,"wallet":ss})
+    return render(request,'tin.html',{"wallet":nn})
+
+
+
+def cac(request):
+    return render(request,'cac.html')#,{"wallet":nn})
 
 
 def bvn(request):

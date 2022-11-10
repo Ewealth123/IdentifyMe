@@ -19,16 +19,16 @@
     height: 19px;
     text-align: center;
 }
-.main_result1{
+.main_result_int{
     position: absolute;
     
-    margin-top: 15px;
+    margin-top: -170px;
     left: 700px;
     font-size: 15px;
     border: 1px ;
     width: 20%;
 }
-.main_result1 p{
+.main_result_int p{
     height: 19px;
     text-align: center;
 }
@@ -135,14 +135,14 @@
         font-size: 12px;
         width: 350px;
     }
-    .main_result1{
+    .main_result_int{
         position: absolute;
         left: 190px;
-        top: 1150px;
+        top: 1305px;
         width: 70%;
          
     }
-    .main_result1 p{
+    .main_result_int p{
         height: 21px;
         font-size: 12px;
         width: 350px;

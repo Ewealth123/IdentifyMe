@@ -11,6 +11,7 @@
     <link rel="icon" href="{% static 'logo (2).png' %}"/>
       <!-- STYLESHEET -->
     <link rel="stylesheet" href="{% static 'voters.css' %}">
+    <link rel="stylesheet" href="{% static 'v_by_nin_searchs.css' %}">
     
 </head>
 <body>
@@ -90,12 +91,21 @@
                     </li>
                     <li>
                         <div class="icon-link">
+                            <a href="tin">
+                                <i class='bx bx-transfer'></i>
+                                <span class="link_name">Tax Identification Number [Tin]</span> 
+                            </a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="icon-link">
                             <a href="profile">
                                 <i class='bx bx-cog' ></i>
                                 <span class="link_name">My Profile</span> 
                             </a>
                         </div>
                     </li>
+                    
                     <li>
                         <div class="icon-link">
                             <a href="account/logout">
@@ -151,7 +161,82 @@
                         <button>Search</button>
                     </form>
                 </div>
-            </div> 
+            </div>
+            <div class="search_result">
+                <h3> Search Result</h3>
+                <p>Surname :</p>
+                <p>First Name :</p>
+                <p>Full Name :</p>
+                <p>Gender :</p>
+                <p>Year Of birth :</p>
+                <p>Id Number :</p>
+                <p>Phone Number :</p>
+                <p>Occupation :</p>
+                <p>Vin :</p>
+                <p>Phone Number2 :</p>
+                <p>Address :</p>
+                <p>LGA :</p>
+                <p>State :</p>
+                <p>Expiration Date :</p> 
+            </div>
+            <div class="main_result">
+                {% for message in messages %}
+                    {%if "m1" in message.tags %}
+                        <p>{{message}}</p>
+                    
+                
+                    {%elif "m2" in message.tags %}
+                        <p>{{message}}</p>
+               
+                    {%elif "m3" in message.tags %}
+                        <p>{{message}}</p>
+                    
+                    {%elif "m4" in message.tags %}
+                        <p>{{message}}</p>
+                    
+                
+                    {%elif "m5" in message.tags %}
+                        <p>{{message}}</p>
+                    
+                
+                    {%elif "m6" in message.tags %}
+                        <p>{{message}}</p>
+                    
+                
+                    {%elif "m7" in message.tags %}
+                        <p>{{message}}</p>
+                    
+                
+                    {%elif "m8" in message.tags %}
+                        <p>{{message}}</p>
+                    
+                
+                    {%elif "m9" in message.tags %}
+                        <p>{{message}}</p>
+                    
+                
+                    {%elif "m10" in message.tags %}
+                        <p>{{message}}</p>
+                    
+                    {%elif "m11" in message.tags %}
+                        <p>{{message}}</p>
+                
+                    {%elif "m12" in message.tags %}
+                        <p>{{message}}</p>
+                    
+                
+                    {%elif "m13" in message.tags %}
+                        <p>{{message}}</p>
+                    
+               
+                    {%elif "m14" in message.tags %}
+                        <p>{{message}}</p>
+                    {%endif%}
+                {% endfor %}        
+            </div>
+            <div class="search_result_img">
+                <img style = "width: 120px; height: 120px;" src="data:image/png;base64,{{img_data}}"/>
+            </div>
         </main>
         <!--   End of Main -->
         <div class="right">
