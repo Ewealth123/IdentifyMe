@@ -6,6 +6,8 @@ from django.contrib import admin
 urlpatterns = [
     path('', views.index_nin, name="index_nin"),
     path('profile',views.Profile, name="profile"),
+    path('slip-form',views.slip_generator, name="slip_form"),
+    path('slip-generator',views.gen, name="slip_generator"),
     path('tin',views.tin, name="tin"),
     path('vnin',views.basics, name="vnin"),
     path('general',views.my_portal, name="my_portal"),

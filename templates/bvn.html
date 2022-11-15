@@ -154,12 +154,21 @@
                         {% csrf_token %}
                         <i class='bx bxs-wallet'></i>
                         <h2 class="client">BNV Number</h2>
-                        <input type="text" name="bvn_number" placeholder="1234567789" required>
-                        <button>Search</button>
+                        <input type="text" name="bvn_number" id="bvn_search" placeholder="1234567789" required>
+                        <button  onclick="myFunction()">Search</button>
                     </form>
                 </div>
             </div> 
-            <div class="frame">
+            <!--   Loader -->
+            <div class="loader" id ="dis_loader">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <!--   End of Loader -->
+            
+            <div class="frame" id="my_frame">
                 <img class="bvn_img"  src="data:image/png;base64,{{img_data}}"/>
                 <img class="bvn_img2" src="data:image/png;base64,{{img_data1}}"/>
             </div>
@@ -225,6 +234,31 @@
         document.querySelector('table tbody').appendChild(tr);
         })
     </script>
+    <script>
+        function myFunction() {
+            if (document.getElementById("bvn_search").value.length< 10){
+                document.getElementById("dis_loader").style.display = "none";
+                alert("Field must be 11 digit");
+            }   else {
+                
+                document.getElementById("dis_loader").style.display = "block";
+                document.getElementById("my_frame").style.display = "none";
+
+                setTimeout(() => {
+                    document.getElementById("dis_loader").style.display = "none";
+                    document.getElementById("my_frame").style.display = "block";
+
+                    
+                    
+
+                }, 20000);
+                document.getElementById("my_frame").style.display = "block";
+            }
+            
+            
+        }
+    </script>
+
         
 </body>
  </html>

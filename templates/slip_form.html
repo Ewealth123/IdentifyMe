@@ -1,0 +1,70 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IdentityMe</title>
+    <!-- BOXICON CDN --> 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="icon" href="{% static 'logo (2).png' %}"/>
+      <!-- STYLESHEET -->
+    <link rel="stylesheet" href="{% static 'v_by_nin.css' %}">
+</head>
+<body>
+    <div class="david">
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            {% for message in messages %}
+                {%if "ans" in message.tags %}
+                    <a  href="slip-generator"><strong>{{message}}</strong></a>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                {%endif%}
+            {% endfor %}
+        </div>
+        <div class="transfer">
+            
+            <form action="" method="POST" enctype="multipart/form-data" >
+                {% csrf_token %}
+                <i class='bx bxs-transfer'></i>
+                <h2 class="client">Slip Generator</h2>
+                <br>
+                <h2 class="client">Surname</h2>
+                <input type="text" name="surname"  required>
+                <br>
+                <h2 class="client">First Name</h2>
+                <input type="text" name="firstname"  required>
+                <br>
+                <h2 class="client">Middle Name</h2>
+                <input type="text" name="middlename"  required>
+                <br>
+                <h2 class="client">Gender</h2>
+                <input type="text" name="gender"  required>
+                <br>
+                <h2 class="client">Tracking Id</h2>
+                <input type="text" name="tracking"  required>
+                <br>
+                <h2 class="client">NIN</h2>
+                <input type="text" name="nin"  required>
+                <br>
+
+                <h2 class="client">Address</h2>
+                <input type="text" name="address"  required>
+                <br>
+                <h2 class="client">Town</h2>
+                <input type="text" name="town"  required>
+                <br>
+                <h2 class="client">Address LGA</h2>
+                <input type="text" name="add_lga"  required>
+                <br>
+                <h2 class="client">Photo</h2>
+                <input type="file" name="file"  required>
+                <br>
+                <a href="slip_generator"><button>Generate</button></a>
+            </form>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -7,6 +7,7 @@ from account.models import agent
 from .models import Payment
 import requests
 import json
+import os
 import PIL.Image as Image
 from io import BytesIO
 import io
@@ -765,6 +766,65 @@ def bvn(request):
                         
     
     return render(request, 'bvn.html',{"wallet":nn})
+
+
+
+def slip_generator(request):
+    if request.method == 'POST' and request.FILES['file']:
+        surname=request.POST["surname"]
+        firstname=request.POST["firstname"]
+        middlename=request.POST["middlename"]
+        gender=request.POST["gender"]
+        tracking=request.POST["tracking"]
+        nin=request.POST["nin"]
+        address=request.POST["address"]
+        town=request.POST["town"]
+        add_lga=request.POST["add_lga"]
+        photo =request.FILES['file']
+        print(photo.name)
+        
+        
+        
+        pp = Image.open(photo)
+        pp.save('static/new_img.png')
+        # with open(pp, "rb") as img_file:
+        #     my_string = base64.b64encode(img_file.read())
+        # print(my_string)
+        # pp.show()
+        
+        
+         
+        
+        
+        if surname== surname:
+            request.session['surname'] = surname
+            request.session['firstname'] = firstname
+            request.session['middlename'] = middlename
+            request.session['gender'] = gender
+            request.session['tracking'] = tracking
+            request.session['nin'] = nin
+            request.session['address'] = address
+            request.session['town'] = town
+            request.session['add_lga'] = add_lga
+            messages.info(request,"Slip generated. Click to view", extra_tags='ans')
+            
+    return render(request,'slip_form.html')
+
+
+def gen(request):
+    context = {'surname':request.session['surname'],
+                'firstname': request.session['firstname'] ,
+                'middlename': request.session['middlename'],
+                'gender': request.session['gender'],
+                'nin': request.session['nin'],
+                'tracking': request.session['tracking'],
+                'address': request.session['address'],
+                'town': request.session['town'],
+                'add_lga': request.session['add_lga'],
+                
+                
+    }
+    return render(request, 'slip_generator.html',context)
 
 def dashboard(request):
     user = request.user
