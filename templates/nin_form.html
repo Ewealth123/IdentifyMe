@@ -1,0 +1,509 @@
+    {% load static %}
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="ni_form.css">
+        <title>Document</title>
+    </head>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: 'poppins',sans-serif;
+        
+        }
+        
+        body {
+            display: flex;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+            background: grey;
+            background-size: cover;
+            color: rgb(7, 1, 1);
+        }
+        
+        .main_nin_container{
+            
+            width: 65%;
+            background: #fff;
+            
+            height: 60%;
+            padding: 25px 30px;
+            border-radius: 5px;
+        }
+        .second_main{
+            border: 1px solid;
+            position: relative;
+            height: 463px;
+            
+        }
+        .first_div hr{
+            position: relative;
+            
+            
+            
+            bottom: 75px;
+        
+        
+        }
+        .first_div h3{
+            color: black;
+            font-size: 25px;
+            font-family: 'poppins',sans-serif;
+            position: relative;
+            bottom: 40px;
+            left: 200px;
+            
+        
+        }
+        .first_div h5{
+            font-size: 18px;
+            font-family: 'poppins',sans-serif;
+            position: relative;
+            bottom: 40px;
+            left: 300px;
+        
+        }
+        .first_div p{
+            font-size: 15px;
+            font-family: 'poppins',sans-serif;
+            position: relative;
+            bottom: 40px;
+            left: 280px;
+            font-weight: bold;
+        }
+        .coat{
+            position: relative;
+            top: 10px;
+            left: 40px;
+            width: 6%;
+            height: 25%;
+        
+        }
+        .nimc_logo{
+            position: relative;
+            margin-left: 890px;
+            width: 7%;
+            height: 20%;
+            bottom: 96px;
+        
+        }
+        .tracking{
+            
+            width: 100%;
+            position: relative;
+            bottom: 76px;
+        }
+        .track{
+            
+            width: 35%;
+        }
+        .track h4{
+            position: relative;
+            top: 20px;
+        }
+        .track h5{
+            position: relative;
+            top: 43px;
+        }
+        .track hr{
+            position: relative;
+            top: 40px;
+        }
+        .track .hr_nin{
+            position: relative;
+            top: 70px;
+        }
+        
+        .names{
+            position: relative;
+            border: 1px solid;
+            width: 27%;
+            height: 200px;
+            left: 300px;
+            bottom: 113px;
+        }
+        .nn .sur{
+            position: relative;
+            top: 20px;
+            font-size: 15px;
+            
+        }
+        .nn .first{
+            position: relative;
+            top: 50px;
+            font-size: 15px;
+            
+        }
+        .nn .mid{
+            position: relative;
+            top: 80px;
+            font-size: 15px;
+            
+        }
+        .nn .gen{
+            position: relative;
+            top: 110px;
+            font-size: 15px;
+            
+        }
+        .nn .mid_hr{
+            position: relative;
+            top: 93px;
+        }
+        .nn .first_hr{
+            position: relative;
+            top: 68px;
+        }
+        .nn .sur_hr{
+            position: relative;
+            top: 40px;
+        }
+        .nn .close{
+            position: relative;
+            right: 301px;
+            margin-top: 124px;
+            
+        }
+        .pics{
+            position: relative;
+            
+            width: 30%;
+            height: 200px;
+            bottom: 473px;
+            left: 730px;
+        }
+        .pics img{
+            width: 60%;
+            height: 100%;
+            position: relative;
+            left: 110px;
+            top: 5px;
+        }
+        .block2{
+            padding: 13px;
+            padding-bottom: 0;
+            padding-left: 5px;
+            position: relative;
+            bottom: 678px;
+            border: 1px solid black;
+            border-left: none;
+            border-right: none;
+            border-bottom: 1px solid black;
+        }
+        #italics {
+            font-weight: 800;
+        }
+        
+        .block3 {
+            position: relative;
+            bottom: 680px;
+            display: flex;
+            text-align: center;
+            position: relative;
+            border: none;
+        }
+        .img {
+            width: 30px;
+        }
+        .inner3 {
+            padding: 25.5px;
+            padding-left: 35px;
+            padding-right: 20px;
+            position: relative;
+            width: 30%;
+            height: 225px;
+            left: 519px;
+            top: -680px;
+            
+            
+           
+            
+            
+        }
+        .data3 {
+            position: relative;
+            top: -35px;
+            left: -50px;
+            padding: 25px;
+            font-size: 13px;
+            font-weight: 600;
+            font-family: sans-serif;
+            width: 355px;
+        }
+        .details7 {
+            position: relative;
+            bottom: 0px;
+            left: 5px;
+            
+        }
+        .details8 {
+            position: relative;
+            left: -20px;
+            bottom: 30px;
+            font-family: sans-serif;
+            font-size: 12px;
+            font-weight: 200;
+        } 
+        .details9 {
+            position: relative;
+            left: -20px;
+            bottom: 0px;
+            font-family: sans-serif;
+            font-size: 12px;
+            font-weight: 200;
+        }
+        .inner_i{
+            padding: 3px;
+            width: 22%;
+            font-size: 15px;
+            border: 1px solid black;
+            border-top: none;
+            border-right: none;
+            border-bottom: none;
+            border-left: none;
+        }
+        .inner_ii {
+            padding: 3px;
+            width: 22%;
+            font-size: 15px;
+            border: 1px solid black;
+            border-top: none;
+            border-right: none;
+            border-bottom: none;
+             
+        }
+        .inner_iii {
+            padding: 3px;
+            width: 22%;
+            font-size: 15px;
+            border: 1px solid black;
+            border-top: none;
+            border-right: none;
+            border-bottom: none;
+        }
+        .inner_iv {
+            padding: 3px;
+            width: 33%;
+            font-size: 15px;
+            border: 1px solid black;
+            border-top: none;
+            border-right: none;
+            border-bottom: none; 
+        }
+        .span {
+            position: relative;
+            bottom: -15px;
+        }
+        
+        .result_tracking{
+            position: relative;
+            left: 100px;
+            top: 3px;
+        }
+        .result_nin{
+            position: relative;
+            left: 50px;
+            top: 26px;
+        }
+        
+        
+        
+        
+        
+        .adjust{
+            position: relative;
+            bottom: 78px;
+            width: 100%;
+        }
+        .inner1 { 
+            width: 23%;
+            border: none;
+            border-right: none;
+            border-top: none;
+        }    
+        .blank {
+            border: 1px solid black;
+            border-left: none;
+            padding: 31px;
+            border-bottom: none;
+        }
+        .inner2 {
+            position: relative;
+            right: -235px;
+            top: -174px;
+            width: 28%;
+            border: none;
+            border-bottom: none;
+            border-right: none;
+            border-left: none;
+        }
+        .data {
+            border: 1px solid black;
+            border-bottom: none;
+            border-left: none;
+            padding: 20px;
+            padding-left: 5px;
+            font-size: 13px;
+            font-weight: 600;
+            font-family: sans-serif;
+        }
+        .data1 {
+            border: 1px solid black;
+            border-bottom: none;
+            border-top: none;
+            border-left: none;
+            padding: 20px;
+            padding-left: 5px;
+            font-size: 12px;
+            font-weight: 600;
+            font-family: sans-serif;
+        }
+        .data2 {
+            border: 1px solid black;
+            border-bottom: none;
+            border-top: none;
+            border-left: none;
+            padding: 20px;
+            padding-left: 5px;
+            font-size: 13px;
+            font-weight: 600;
+            font-family: sans-serif;
+        }
+        .data4 {
+            border: 1px solid black;
+            border-bottom: none;
+            
+            padding: 20px;
+            padding-left: 5px;
+            font-size: 13px;
+            font-weight: 600;
+            font-family: sans-serif;
+        }
+        .footer{
+            position: relative;
+            top: 50px;
+            color: rgb(89, 136, 18);
+        }
+        @media screen and (max-width: 768px){
+            .second_main{
+                width: 343%;
+                
+                margin: auto;
+            }
+            .main_nin_container{
+                width: 100%;
+                background: #fff;
+                
+                
+                padding: 25px 30px;
+                border-radius: 5px;
+            }
+            body{
+                background: white;
+            }
+        }
+
+    </style>
+    <body>
+        <div class="main_nin_container">
+            <div class="second_main">
+                <div class="first_div">
+                    <img class="coat" src="{% static 'coat_logo.png' %}" alt="">
+                    <h3>National Identity Management System</h3>
+                    <h5>Federal Republic of Nigeria</h5>
+                    <p>National Identification Number Slip (NINS)</p>
+                    <img class="nimc_logo" src="{% static 'nimc_logo.png' %}" alt="">
+                    <hr>
+                </div>
+                <div class="adjust">
+                    <div class="inner1">
+                        <div class="data1">Tracking ID: 
+                            <span class="details1">{{tracking}}</span> 
+                        </div> 
+        
+                        <div class="data"> NIN: 
+                            <span class="details2">{{nin}}</span> 
+                        </div> 
+        
+                        <div class="blank"> </div>
+                    </div>
+                
+                    <div class="inner2">
+                        
+                        <div class="data2">Surname: 
+                            <span class="details3">{{surname}}</span>
+                        </div>
+                        
+            
+                        <div class="data"> First Name: 
+                            <span class="details4"> {{firstname}}</span> 
+                        </div>
+            
+                        <div class="data"> Middle Name: 
+                            <span class="details5">{{middlename}}</span> 
+                        </div>
+            
+                        <div class="data4"> Gender: 
+                            <span class="details6">{{gender}}</span> 
+                        </div>     
+                    </div>
+        
+                </div>
+                
+                <div class="pics">
+                    <img src="data:image/png;base64,{{img}}" alt="">
+                </div>
+                <div class="inner3">
+                    <div class="data3"> Address: 
+                        <p class="details7">{{address}}</p> 
+                    </div>
+                    
+                    <div class="state">
+                        <br> <br> <br> <br> <span class="details8">{{town}}</span> <br> 
+                        <span class="details9"> {{add_lga}}</span> 
+                    </div>
+                </div>
+                
+
+                <div class="block2">
+                    <b>Note: &nbsp; </b> The &nbsp; <i id="italics" >National Identification Number (NIN) is your identity.</i>&nbsp; &nbsp;  It is confidential and may also be released for legitimate transactions.
+                    <p>You will be notified when your National Identity Card is ready &nbsp; (for any enquires please contact)</p>
+                </div>
+
+                <div class="block3">
+                    <div class="inner_i">
+                        <img class="img" src="{% static 'cloud.png' %}">
+                        <br>
+                        <span class="span"> <b> helpdesk@nimc.gov.ng</b></span>
+                    </div>
+                    <div class="inner_ii"> 
+                        <img class="img" src="{% static 'Windows_Internet_Explorer_Logo-removebg-preview.png' %}">
+                        <br>
+                        <span class="span"> <b> www.nimc.gov.ng</b></span>
+                    </div>
+                    <div class="inner_iii">
+                        <img class="img"src="{% static 'contact.png' %}">
+                        <br>
+                        <span class="span"><b>0700-CALL-NIMC <p class="p">(0700-2255-646)</p></b> </span>
+                    </div>
+                    <div class="inner_iv">
+                        <img class="img" src="{% static 'save.png' %}">
+                        <br>
+                        <span><b>National Identity Management Commission</b>
+                        <p>11, Sokode Cresent, Off Dalaba Street, Zone 5 Wuse, Abuja Nigeria</p></span>
+                    </div>
+                </div>    
+            </div>
+            <div>
+                <p class="footer"><b>Verified and Downloaded from identityme.africa</b></p>
+            </div> 
+
+        </div>
+    </body>
+    </html>

@@ -33,7 +33,7 @@ def v_by_ninw(request):
 
     
     
-    if oo < 150:
+    if oo < 200:
         messages.info(request,"Insufficient balance", extra_tags='ans')
         
     else:
@@ -57,6 +57,21 @@ def v_by_ninw(request):
             # ress = res['response']
             # vs = res['verificationStatus']
             # print(vs)
+            urll = "https://ad1x.idcheck.ng/api/triangle/token/create"
+            payload={
+                    'username': 'igbonekwuifeanyi18@gmail.com',
+                    'password' : 'Igbonekwu1#'
+                    
+            }
+            files=[
+
+            ]
+            
+
+            response = requests.request("POST", urll,  data=payload, files=files).json()
+            
+            ggt = response['access_token']
+            
             url = "https://ad1x.idcheck.ng/api/triangle/nin/verify"
             payload={'nin': '20731396857',
                     'searchType': 'nin',
@@ -67,13 +82,14 @@ def v_by_ninw(request):
 
             ]
             headers = {
-            'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjY0ZGIzNGRjYWMxZDdkNTBmYTAwMmYwMjMyNjQxMWRmODQ3MWVmZWUzZTI1YjU1M2NlNmU5ZGMzZTIyYWMwMjQ4ODZlZjZjZWNmZDAwODUxIn0.eyJhdWQiOiI1IiwianRpIjoiNjRkYjM0ZGNhYzFkN2Q1MGZhMDAyZjAyMzI2NDExZGY4NDcxZWZlZTNlMjViNTUzY2U2ZTlkYzNlMjJhYzAyNDg4NmVmNmNlY2ZkMDA4NTEiLCJpYXQiOjE2Njg2ODg5MzYsIm5iZiI6MTY2ODY4ODkzNiwiZXhwIjoxNzAwMjI0OTM2LCJzdWIiOiIyMTg5Iiwic2NvcGVzIjpbXX0.D1Ffn1a1nH8ZD3k03yVmNmCnA_BYLQIs07CdnB7IvmprQritwEViWWE9Py5a2opzeTac3C_QknF3WCRnv4gwEW1mHpebNh808j6ICDRDOXrn1DAOIrAYthp9-NYlWjL5UnK716DBbIBGnK4d1qjZHgkrK9VaJ4YsCi8si-jF0bGNQRT2bj091rYDPcUTz10PGa8eQ9ReQ2UpjOKCti5nADNwuZut88Qh4MisQD0g7KRFdr74BRR7IxaTvZKJMfZRqSmhDdw_1kghwGFDXKytjxlW7LfEtLrntTgzFoJH5_Dwi9ZHakPKl0siqEkcOa_jYTjKtlvkeDHoN_qj159LF5bz_LwWThJnYrnDAxfMA0GsM4SWH6rRc5NFIR7iOsahZTQdYMIKrmXxSS8SCCUj1jMzFMVDVvVkPlA21lRNEtgH9dioxXp2kqGmVCehSFQVFvAt3beKvFZSySU05pNOCZAxsBCN-YXqCBRQaCQu2Eupxk4pfISrhmps3Tyrers7N-nknMAaSm2srxg5Toe7ZvNsEBHjPpkjZtTlOkTKORQ-4u_HULAzfFk68mvzAlk852wH3OCTIHApWNQ-Bk_KoSepp-M4B1f-MuGlcn1Ja23klHlt-XcyJqnHR03uDv34B97Fl5w3kqH2f45fPmr9uY8B59OSd08gctcOarhFj4A'
+            'Authorization': ggt
             }
             res = requests.request("POST", url, headers=headers,  data=payload, files=files).json()
             print(res)
             resss =res['data']
             ress=resss['data']
             print(ress)
+            sin=ress['signature']
             vs = res['status']
             #vss =res['message']
             # vsss = res['message']
@@ -96,93 +112,193 @@ def v_by_ninw(request):
             #     if vs == "FAILED":
             #         messages.info(request,"Third Party System is Unavailable", extra_tags='ans')
             else:
-                math = int(nn) 
-                i = int(150)
-                done  =  math - i
-                print(done)
-                agent.objects.filter(email = user.username).update(wallet_bal = done)
-                rr = agent.objects.filter(email= user.username).values("wallet_bal")
-                ss=rr[0]['wallet_bal']
+                if sin == '***':
+                    math = int(nn) 
+                    i = int(200)
+                    done  =  math - i
+                    print(done)
+                    agent.objects.filter(email = user.username).update(wallet_bal = done)
+                    rr = agent.objects.filter(email= user.username).values("wallet_bal")
+                    ss=rr[0]['wallet_bal']
+                    
+                    nin_Surname =ress['surname']
+                    nin_firstname =ress['firstname']
+                    nin_middlename =ress['middlename']
+                    nin_gender =ress['gender']
+                    nin_dateofbirth =ress['birthdate']
+                    nin_nin =ress['nin']
+                    nin_phonenumber =ress['telephoneno']
+                    #nin_email =ress[0]['heigth']
+                    nin_trackingid =ress['trackingId']
+                    nin_town =ress['residence_Town']
+                    nin_address =ress['residence_AdressLine1']
+                    nin_residencelga =ress['residence_lga']
+                    nin_residencestate =ress['residence_state']
+                    
+                    
+                    request.session['nin_Surname'] = nin_Surname
+                    request.session['nin_firstname'] = nin_firstname
+                    request.session['nin_middlename'] = nin_middlename
+                    request.session['nin_gender'] = nin_gender
+                    request.session['nin_nin'] = nin_nin
+                    request.session['nin_trackingid'] = nin_trackingid
+                    request.session['nin_address'] = nin_address
+                    request.session['nin_town'] = nin_town
+                    request.session['nin_residencelga'] = nin_residencelga
+                    
+                    # nin_stateoforigin =ress[0]['self_origin_state']
+                    # nin_noksurname =ress[0]['nok_surname']
+                    # nin_nokfirstname =ress[0]['nok_firstname']
+                    # nin_nokmiddlename =ress[0]['nok_middlename']
+                    # nin_noktown =ress[0]['nok_town']
+                    # nin_nokstate =ress[0]['nok_state']
+                    # nin_country =ress[0]['birthcountry']
+                    # nin_title =ress[0]['title']
+                    
+                    # request.session['nin_Surname'] = nin_Surname
+                    # request.session['nin_firstname'] = nin_firstname
+                    # request.session['nin_middlename'] = nin_middlename
+                    # request.session['nin_gender'] = nin_gender
+                    # request.session['nin_nin'] = nin_nin
+                    # request.session['nin_trackingid'] = nin_trackingid
+                    # request.session['nin_address'] = nin_address
+                    # request.session['nin_town'] = nin_town
+                    # request.session['nin_residencelga'] = nin_residencelga
+                    
+                    messages.info(request,nin_Surname,extra_tags='m1')
+                    messages.info(request,nin_firstname,extra_tags='m2')
+                    messages.info(request,nin_middlename,extra_tags='m3')
+                    messages.info(request,nin_gender,extra_tags='m4')
+                    messages.info(request,nin_dateofbirth,extra_tags='m5')
+                    messages.info(request,nin_nin,extra_tags='m6')
+                    messages.info(request,nin_phonenumber,extra_tags='m7')
+                    #messages.info(request,nin_email,extra_tags='m8')
+                    messages.info(request,nin_trackingid,extra_tags='m8')
+                    messages.info(request,nin_town,extra_tags='m9')
+                    messages.info(request,nin_address,extra_tags='m10')
+                    messages.info(request,nin_residencelga,extra_tags='m11')
+                    messages.info(request,nin_residencestate,extra_tags='m12')
+                    # messages.info(request,nin_stateoforigin,extra_tags='m14')
+                    # messages.info(request,nin_noksurname,extra_tags='m15')
+                    # messages.info(request,nin_nokfirstname,extra_tags='m16')
+                    # messages.info(request,nin_nokmiddlename,extra_tags='m17')
+                    # messages.info(request,nin_noktown,extra_tags='m18')
+                    # messages.info(request,nin_nokstate,extra_tags='m19')
+                    # messages.info(request,nin_country,extra_tags='m20')
+                    # messages.info(request,nin_title,extra_tags='m21')
+                    
+                    #image 
+                    photo = ress['photo']
+                    byte_data =f"'{photo}'"
+                    b= base64.b64decode(byte_data)
+                    data = io.BytesIO(b)
+                    data.seek(0)
+                    pp = Image.open(data)
+                    pp.save(data, "PNG")
+                    end = base64.b64encode(data.getvalue())
+                    img  = end.decode('utf-8')
+                    request.session['img'] = img
+                    return render(request,'v_by_ninw.html',{"img_data":img,"wallet":ss})
+                else:
+                    math = int(nn) 
+                    i = int(200)
+                    done  =  math - i
+                    print(done)
+                    agent.objects.filter(email = user.username).update(wallet_bal = done)
+                    rr = agent.objects.filter(email= user.username).values("wallet_bal")
+                    ss=rr[0]['wallet_bal']
+                    
+                    nin_Surname =ress['surname']
+                    nin_firstname =ress['firstname']
+                    nin_middlename =ress['middlename']
+                    nin_gender =ress['gender']
+                    nin_dateofbirth =ress['birthdate']
+                    nin_nin =ress['nin']
+                    nin_phonenumber =ress['telephoneno']
+                    #nin_email =ress[0]['heigth']
+                    nin_trackingid =ress['trackingId']
+                    nin_town =ress['residence_Town']
+                    nin_address =ress['residence_AdressLine1']
+                    nin_residencelga =ress['residence_lga']
+                    nin_residencestate =ress['residence_state']
+                    
+                    
+                    request.session['nin_Surname'] = nin_Surname
+                    request.session['nin_firstname'] = nin_firstname
+                    request.session['nin_middlename'] = nin_middlename
+                    request.session['nin_gender'] = nin_gender
+                    request.session['nin_nin'] = nin_nin
+                    request.session['nin_trackingid'] = nin_trackingid
+                    request.session['nin_address'] = nin_address
+                    request.session['nin_town'] = nin_town
+                    request.session['nin_residencelga'] = nin_residencelga
+                    
+                    # nin_stateoforigin =ress[0]['self_origin_state']
+                    # nin_noksurname =ress[0]['nok_surname']
+                    # nin_nokfirstname =ress[0]['nok_firstname']
+                    # nin_nokmiddlename =ress[0]['nok_middlename']
+                    # nin_noktown =ress[0]['nok_town']
+                    # nin_nokstate =ress[0]['nok_state']
+                    # nin_country =ress[0]['birthcountry']
+                    # nin_title =ress[0]['title']
+                    
+                    # request.session['nin_Surname'] = nin_Surname
+                    # request.session['nin_firstname'] = nin_firstname
+                    # request.session['nin_middlename'] = nin_middlename
+                    # request.session['nin_gender'] = nin_gender
+                    # request.session['nin_nin'] = nin_nin
+                    # request.session['nin_trackingid'] = nin_trackingid
+                    # request.session['nin_address'] = nin_address
+                    # request.session['nin_town'] = nin_town
+                    # request.session['nin_residencelga'] = nin_residencelga
+                    
+                    messages.info(request,nin_Surname,extra_tags='m1')
+                    messages.info(request,nin_firstname,extra_tags='m2')
+                    messages.info(request,nin_middlename,extra_tags='m3')
+                    messages.info(request,nin_gender,extra_tags='m4')
+                    messages.info(request,nin_dateofbirth,extra_tags='m5')
+                    messages.info(request,nin_nin,extra_tags='m6')
+                    messages.info(request,nin_phonenumber,extra_tags='m7')
+                    #messages.info(request,nin_email,extra_tags='m8')
+                    messages.info(request,nin_trackingid,extra_tags='m8')
+                    messages.info(request,nin_town,extra_tags='m9')
+                    messages.info(request,nin_address,extra_tags='m10')
+                    messages.info(request,nin_residencelga,extra_tags='m11')
+                    messages.info(request,nin_residencestate,extra_tags='m12')
+                    # messages.info(request,nin_stateoforigin,extra_tags='m14')
+                    # messages.info(request,nin_noksurname,extra_tags='m15')
+                    # messages.info(request,nin_nokfirstname,extra_tags='m16')
+                    # messages.info(request,nin_nokmiddlename,extra_tags='m17')
+                    # messages.info(request,nin_noktown,extra_tags='m18')
+                    # messages.info(request,nin_nokstate,extra_tags='m19')
+                    # messages.info(request,nin_country,extra_tags='m20')
+                    # messages.info(request,nin_title,extra_tags='m21')
+                    
+                    #image 
+                    photo = ress['photo']
+                    byte_data =f"'{photo}'"
+                    b= base64.b64decode(byte_data)
+                    data = io.BytesIO(b)
+                    data.seek(0)
+                    pp = Image.open(data)
+                    pp.save(data, "PNG")
+                    end = base64.b64encode(data.getvalue())
+                    img  = end.decode('utf-8')
+                    request.session['img'] = img
+                    #sig  
+                    photo1 = ress['signature']
+                    byte_data1 =f"'{photo1}'"
+                    b1= base64.b64decode(byte_data1)
+                    data1 = io.BytesIO(b1)
+                    data1.seek(0)
+                    pp1 = Image.open(data1)
+                    pp1.save(data1, "PNG")
+                    end1 = base64.b64encode(data1.getvalue())
+                    img1  = end1.decode('utf-8')
                 
-                nin_Surname =ress['surname']
-                nin_firstname =ress['firstname']
-                nin_middlename =ress['middlename']
-                nin_gender =ress['gender']
-                nin_dateofbirth =ress['birthdate']
-                nin_nin =ress['nin']
-                nin_phonenumber =ress['telephoneno']
-                #nin_email =ress[0]['heigth']
-                nin_trackingid =ress['trackingId']
-                nin_town =ress['residence_Town']
-                nin_address =ress['residence_AdressLine1']
-                nin_residencelga =ress['residence_lga']
-                nin_residencestate =ress['residence_state']
-                # nin_stateoforigin =ress[0]['self_origin_state']
-                # nin_noksurname =ress[0]['nok_surname']
-                # nin_nokfirstname =ress[0]['nok_firstname']
-                # nin_nokmiddlename =ress[0]['nok_middlename']
-                # nin_noktown =ress[0]['nok_town']
-                # nin_nokstate =ress[0]['nok_state']
-                # nin_country =ress[0]['birthcountry']
-                # nin_title =ress[0]['title']
-                
-                request.session['nin_Surname'] = nin_Surname
-                request.session['nin_firstname'] = nin_firstname
-                request.session['nin_middlename'] = nin_middlename
-                request.session['nin_gender'] = nin_gender
-                request.session['nin_nin'] = nin_nin
-                request.session['nin_trackingid'] = nin_trackingid
-                request.session['nin_address'] = nin_address
-                request.session['nin_town'] = nin_town
-                request.session['nin_residencelga'] = nin_residencelga
-                
-                messages.info(request,nin_Surname,extra_tags='m1')
-                messages.info(request,nin_firstname,extra_tags='m2')
-                messages.info(request,nin_middlename,extra_tags='m3')
-                messages.info(request,nin_gender,extra_tags='m4')
-                messages.info(request,nin_dateofbirth,extra_tags='m5')
-                messages.info(request,nin_nin,extra_tags='m6')
-                messages.info(request,nin_phonenumber,extra_tags='m7')
-                #messages.info(request,nin_email,extra_tags='m8')
-                messages.info(request,nin_trackingid,extra_tags='m8')
-                messages.info(request,nin_town,extra_tags='m9')
-                messages.info(request,nin_address,extra_tags='m10')
-                messages.info(request,nin_residencelga,extra_tags='m11')
-                messages.info(request,nin_residencestate,extra_tags='m12')
-                # messages.info(request,nin_stateoforigin,extra_tags='m14')
-                # messages.info(request,nin_noksurname,extra_tags='m15')
-                # messages.info(request,nin_nokfirstname,extra_tags='m16')
-                # messages.info(request,nin_nokmiddlename,extra_tags='m17')
-                # messages.info(request,nin_noktown,extra_tags='m18')
-                # messages.info(request,nin_nokstate,extra_tags='m19')
-                # messages.info(request,nin_country,extra_tags='m20')
-                # messages.info(request,nin_title,extra_tags='m21')
-                
-                #image 
-                photo = ress['photo']
-                byte_data =f"'{photo}'"
-                b= base64.b64decode(byte_data)
-                data = io.BytesIO(b)
-                data.seek(0)
-                pp = Image.open(data)
-                pp.save(data, "PNG")
-                end = base64.b64encode(data.getvalue())
-                img  = end.decode('utf-8')
-                request.session['img'] = img
-                #sig  
-                photo1 = ress['signature']
-                byte_data1 =f"'{photo1}'"
-                b1= base64.b64decode(byte_data1)
-                data1 = io.BytesIO(b1)
-                data1.seek(0)
-                pp1 = Image.open(data1)
-                pp1.save(data1, "PNG")
-                end1 = base64.b64encode(data1.getvalue())
-                img1  = end1.decode('utf-8')
                 
                 
-                
-                return render(request,'v_by_ninw.html',{"img_data":img,"img_data1":img1,"wallet":ss})
+                    return render(request,'v_by_ninw.html',{"img_data":img,"img_data1":img1,"wallet":ss})
         
         
     return render(request, 'v_by_ninw.html',{"wallet":nn})
@@ -192,7 +308,7 @@ def v_by_phone(request):
     mm = agent.objects.filter(email= user.username).values("wallet_bal")
     nn=mm[0]['wallet_bal']
     oo = int(nn)
-    if oo < 150:
+    if oo < 200:
         messages.info(request,"Insufficient balance", extra_tags='ans')
         
     else:
@@ -216,6 +332,21 @@ def v_by_phone(request):
             # vs = res['verificationStatus']
             # print(vs)
             
+            urll = "https://ad1x.idcheck.ng/api/triangle/token/create"
+            payload={
+                    'username': 'igbonekwuifeanyi18@gmail.com',
+                    'password' : 'Igbonekwu1#'
+                    
+            }
+            files=[
+
+            ]
+            
+
+            response = requests.request("POST", urll,  data=payload, files=files).json()
+            
+            ggt = response['access_token']
+            
             url = "https://ad1x.idcheck.ng/api/triangle/nin/verify"
             payload={'nin': '20731396857',
                     'searchType': 'phone',
@@ -226,12 +357,13 @@ def v_by_phone(request):
 
             ]
             headers = {
-            'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjY0ZGIzNGRjYWMxZDdkNTBmYTAwMmYwMjMyNjQxMWRmODQ3MWVmZWUzZTI1YjU1M2NlNmU5ZGMzZTIyYWMwMjQ4ODZlZjZjZWNmZDAwODUxIn0.eyJhdWQiOiI1IiwianRpIjoiNjRkYjM0ZGNhYzFkN2Q1MGZhMDAyZjAyMzI2NDExZGY4NDcxZWZlZTNlMjViNTUzY2U2ZTlkYzNlMjJhYzAyNDg4NmVmNmNlY2ZkMDA4NTEiLCJpYXQiOjE2Njg2ODg5MzYsIm5iZiI6MTY2ODY4ODkzNiwiZXhwIjoxNzAwMjI0OTM2LCJzdWIiOiIyMTg5Iiwic2NvcGVzIjpbXX0.D1Ffn1a1nH8ZD3k03yVmNmCnA_BYLQIs07CdnB7IvmprQritwEViWWE9Py5a2opzeTac3C_QknF3WCRnv4gwEW1mHpebNh808j6ICDRDOXrn1DAOIrAYthp9-NYlWjL5UnK716DBbIBGnK4d1qjZHgkrK9VaJ4YsCi8si-jF0bGNQRT2bj091rYDPcUTz10PGa8eQ9ReQ2UpjOKCti5nADNwuZut88Qh4MisQD0g7KRFdr74BRR7IxaTvZKJMfZRqSmhDdw_1kghwGFDXKytjxlW7LfEtLrntTgzFoJH5_Dwi9ZHakPKl0siqEkcOa_jYTjKtlvkeDHoN_qj159LF5bz_LwWThJnYrnDAxfMA0GsM4SWH6rRc5NFIR7iOsahZTQdYMIKrmXxSS8SCCUj1jMzFMVDVvVkPlA21lRNEtgH9dioxXp2kqGmVCehSFQVFvAt3beKvFZSySU05pNOCZAxsBCN-YXqCBRQaCQu2Eupxk4pfISrhmps3Tyrers7N-nknMAaSm2srxg5Toe7ZvNsEBHjPpkjZtTlOkTKORQ-4u_HULAzfFk68mvzAlk852wH3OCTIHApWNQ-Bk_KoSepp-M4B1f-MuGlcn1Ja23klHlt-XcyJqnHR03uDv34B97Fl5w3kqH2f45fPmr9uY8B59OSd08gctcOarhFj4A'
+            'Authorization': ggt
             }
             res = requests.request("POST", url, headers=headers,  data=payload, files=files).json()
             print(res)
             resss =res['data']
             ress=resss['data']
+            sin=ress['signature']
             print(ress)
             vs = res['status']
             #vss =res['message']
@@ -253,93 +385,193 @@ def v_by_phone(request):
             #     if vs == "FAILED":
             #         messages.info(request,"Third Party System is Unavailable", extra_tags='ans')
             else:
-                math = int(nn) 
-                i = int(150)
-                done  =  math - i
-                print(done)
-                agent.objects.filter(email = user.username).update(wallet_bal = done)
-                rr = agent.objects.filter(email= user.username).values("wallet_bal")
-                ss=rr[0]['wallet_bal']
+                if sin == '***':
+                    math = int(nn) 
+                    i = int(200)
+                    done  =  math - i
+                    print(done)
+                    agent.objects.filter(email = user.username).update(wallet_bal = done)
+                    rr = agent.objects.filter(email= user.username).values("wallet_bal")
+                    ss=rr[0]['wallet_bal']
+                    
+                    nin_Surname =ress['surname']
+                    nin_firstname =ress['firstname']
+                    nin_middlename =ress['middlename']
+                    nin_gender =ress['gender']
+                    nin_dateofbirth =ress['birthdate']
+                    nin_nin =ress['nin']
+                    nin_phonenumber =ress['telephoneno']
+                    #nin_email =ress[0]['heigth']
+                    nin_trackingid =ress['trackingId']
+                    nin_town =ress['residence_Town']
+                    nin_address =ress['residence_AdressLine1']
+                    nin_residencelga =ress['residence_lga']
+                    nin_residencestate =ress['residence_state']
+                    
+                    
+                    request.session['nin_Surname'] = nin_Surname
+                    request.session['nin_firstname'] = nin_firstname
+                    request.session['nin_middlename'] = nin_middlename
+                    request.session['nin_gender'] = nin_gender
+                    request.session['nin_nin'] = nin_nin
+                    request.session['nin_trackingid'] = nin_trackingid
+                    request.session['nin_address'] = nin_address
+                    request.session['nin_town'] = nin_town
+                    request.session['nin_residencelga'] = nin_residencelga
+                    
+                    # nin_stateoforigin =ress[0]['self_origin_state']
+                    # nin_noksurname =ress[0]['nok_surname']
+                    # nin_nokfirstname =ress[0]['nok_firstname']
+                    # nin_nokmiddlename =ress[0]['nok_middlename']
+                    # nin_noktown =ress[0]['nok_town']
+                    # nin_nokstate =ress[0]['nok_state']
+                    # nin_country =ress[0]['birthcountry']
+                    # nin_title =ress[0]['title']
+                    
+                    # request.session['nin_Surname'] = nin_Surname
+                    # request.session['nin_firstname'] = nin_firstname
+                    # request.session['nin_middlename'] = nin_middlename
+                    # request.session['nin_gender'] = nin_gender
+                    # request.session['nin_nin'] = nin_nin
+                    # request.session['nin_trackingid'] = nin_trackingid
+                    # request.session['nin_address'] = nin_address
+                    # request.session['nin_town'] = nin_town
+                    # request.session['nin_residencelga'] = nin_residencelga
+                    
+                    messages.info(request,nin_Surname,extra_tags='m1')
+                    messages.info(request,nin_firstname,extra_tags='m2')
+                    messages.info(request,nin_middlename,extra_tags='m3')
+                    messages.info(request,nin_gender,extra_tags='m4')
+                    messages.info(request,nin_dateofbirth,extra_tags='m5')
+                    messages.info(request,nin_nin,extra_tags='m6')
+                    messages.info(request,nin_phonenumber,extra_tags='m7')
+                    #messages.info(request,nin_email,extra_tags='m8')
+                    messages.info(request,nin_trackingid,extra_tags='m8')
+                    messages.info(request,nin_town,extra_tags='m9')
+                    messages.info(request,nin_address,extra_tags='m10')
+                    messages.info(request,nin_residencelga,extra_tags='m11')
+                    messages.info(request,nin_residencestate,extra_tags='m12')
+                    # messages.info(request,nin_stateoforigin,extra_tags='m14')
+                    # messages.info(request,nin_noksurname,extra_tags='m15')
+                    # messages.info(request,nin_nokfirstname,extra_tags='m16')
+                    # messages.info(request,nin_nokmiddlename,extra_tags='m17')
+                    # messages.info(request,nin_noktown,extra_tags='m18')
+                    # messages.info(request,nin_nokstate,extra_tags='m19')
+                    # messages.info(request,nin_country,extra_tags='m20')
+                    # messages.info(request,nin_title,extra_tags='m21')
+                    
+                    #image 
+                    photo = ress['photo']
+                    byte_data =f"'{photo}'"
+                    b= base64.b64decode(byte_data)
+                    data = io.BytesIO(b)
+                    data.seek(0)
+                    pp = Image.open(data)
+                    pp.save(data, "PNG")
+                    end = base64.b64encode(data.getvalue())
+                    img  = end.decode('utf-8')
+                    request.session['img'] = img
+                    return render(request,'v_by_phone.html',{"img_data":img,"wallet":ss})
+                else:
+                    math = int(nn) 
+                    i = int(200)
+                    done  =  math - i
+                    print(done)
+                    agent.objects.filter(email = user.username).update(wallet_bal = done)
+                    rr = agent.objects.filter(email= user.username).values("wallet_bal")
+                    ss=rr[0]['wallet_bal']
+                    
+                    nin_Surname =ress['surname']
+                    nin_firstname =ress['firstname']
+                    nin_middlename =ress['middlename']
+                    nin_gender =ress['gender']
+                    nin_dateofbirth =ress['birthdate']
+                    nin_nin =ress['nin']
+                    nin_phonenumber =ress['telephoneno']
+                    #nin_email =ress[0]['heigth']
+                    nin_trackingid =ress['trackingId']
+                    nin_town =ress['residence_Town']
+                    nin_address =ress['residence_AdressLine1']
+                    nin_residencelga =ress['residence_lga']
+                    nin_residencestate =ress['residence_state']
+                    
+                    
+                    request.session['nin_Surname'] = nin_Surname
+                    request.session['nin_firstname'] = nin_firstname
+                    request.session['nin_middlename'] = nin_middlename
+                    request.session['nin_gender'] = nin_gender
+                    request.session['nin_nin'] = nin_nin
+                    request.session['nin_trackingid'] = nin_trackingid
+                    request.session['nin_address'] = nin_address
+                    request.session['nin_town'] = nin_town
+                    request.session['nin_residencelga'] = nin_residencelga
+                    
+                    # nin_stateoforigin =ress[0]['self_origin_state']
+                    # nin_noksurname =ress[0]['nok_surname']
+                    # nin_nokfirstname =ress[0]['nok_firstname']
+                    # nin_nokmiddlename =ress[0]['nok_middlename']
+                    # nin_noktown =ress[0]['nok_town']
+                    # nin_nokstate =ress[0]['nok_state']
+                    # nin_country =ress[0]['birthcountry']
+                    # nin_title =ress[0]['title']
+                    
+                    # request.session['nin_Surname'] = nin_Surname
+                    # request.session['nin_firstname'] = nin_firstname
+                    # request.session['nin_middlename'] = nin_middlename
+                    # request.session['nin_gender'] = nin_gender
+                    # request.session['nin_nin'] = nin_nin
+                    # request.session['nin_trackingid'] = nin_trackingid
+                    # request.session['nin_address'] = nin_address
+                    # request.session['nin_town'] = nin_town
+                    # request.session['nin_residencelga'] = nin_residencelga
+                    
+                    messages.info(request,nin_Surname,extra_tags='m1')
+                    messages.info(request,nin_firstname,extra_tags='m2')
+                    messages.info(request,nin_middlename,extra_tags='m3')
+                    messages.info(request,nin_gender,extra_tags='m4')
+                    messages.info(request,nin_dateofbirth,extra_tags='m5')
+                    messages.info(request,nin_nin,extra_tags='m6')
+                    messages.info(request,nin_phonenumber,extra_tags='m7')
+                    #messages.info(request,nin_email,extra_tags='m8')
+                    messages.info(request,nin_trackingid,extra_tags='m8')
+                    messages.info(request,nin_town,extra_tags='m9')
+                    messages.info(request,nin_address,extra_tags='m10')
+                    messages.info(request,nin_residencelga,extra_tags='m11')
+                    messages.info(request,nin_residencestate,extra_tags='m12')
+                    # messages.info(request,nin_stateoforigin,extra_tags='m14')
+                    # messages.info(request,nin_noksurname,extra_tags='m15')
+                    # messages.info(request,nin_nokfirstname,extra_tags='m16')
+                    # messages.info(request,nin_nokmiddlename,extra_tags='m17')
+                    # messages.info(request,nin_noktown,extra_tags='m18')
+                    # messages.info(request,nin_nokstate,extra_tags='m19')
+                    # messages.info(request,nin_country,extra_tags='m20')
+                    # messages.info(request,nin_title,extra_tags='m21')
+                    
+                    #image 
+                    photo = ress['photo']
+                    byte_data =f"'{photo}'"
+                    b= base64.b64decode(byte_data)
+                    data = io.BytesIO(b)
+                    data.seek(0)
+                    pp = Image.open(data)
+                    pp.save(data, "PNG")
+                    end = base64.b64encode(data.getvalue())
+                    img  = end.decode('utf-8')
+                    request.session['img'] = img
+                    #sig  
+                    photo1 = ress['signature']
+                    byte_data1 =f"'{photo1}'"
+                    b1= base64.b64decode(byte_data1)
+                    data1 = io.BytesIO(b1)
+                    data1.seek(0)
+                    pp1 = Image.open(data1)
+                    pp1.save(data1, "PNG")
+                    end1 = base64.b64encode(data1.getvalue())
+                    img1  = end1.decode('utf-8')
                 
-                nin_Surname =ress['surname']
-                nin_firstname =ress['firstname']
-                nin_middlename =ress['middlename']
-                nin_gender =ress['gender']
-                nin_dateofbirth =ress['birthdate']
-                nin_nin =ress['nin']
-                nin_phonenumber =ress['telephoneno']
-                #nin_email =ress[0]['heigth']
-                nin_trackingid =ress['trackingId']
-                nin_town =ress['residence_Town']
-                nin_address =ress['residence_AdressLine1']
-                nin_residencelga =ress['residence_lga']
-                nin_residencestate =ress['residence_state']
-                # nin_stateoforigin =ress[0]['self_origin_state']
-                # nin_noksurname =ress[0]['nok_surname']
-                # nin_nokfirstname =ress[0]['nok_firstname']
-                # nin_nokmiddlename =ress[0]['nok_middlename']
-                # nin_noktown =ress[0]['nok_town']
-                # nin_nokstate =ress[0]['nok_state']
-                # nin_country =ress[0]['birthcountry']
-                # nin_title =ress[0]['title']
-                
-                # request.session['nin_Surname'] = nin_Surname
-                # request.session['nin_firstname'] = nin_firstname
-                # request.session['nin_middlename'] = nin_middlename
-                # request.session['nin_gender'] = nin_gender
-                # request.session['nin_nin'] = nin_nin
-                # request.session['nin_trackingid'] = nin_trackingid
-                # request.session['nin_address'] = nin_address
-                # request.session['nin_town'] = nin_town
-                # request.session['nin_residencelga'] = nin_residencelga
-                
-                messages.info(request,nin_Surname,extra_tags='m1')
-                messages.info(request,nin_firstname,extra_tags='m2')
-                messages.info(request,nin_middlename,extra_tags='m3')
-                messages.info(request,nin_gender,extra_tags='m4')
-                messages.info(request,nin_dateofbirth,extra_tags='m5')
-                messages.info(request,nin_nin,extra_tags='m6')
-                messages.info(request,nin_phonenumber,extra_tags='m7')
-                #messages.info(request,nin_email,extra_tags='m8')
-                messages.info(request,nin_trackingid,extra_tags='m8')
-                messages.info(request,nin_town,extra_tags='m9')
-                messages.info(request,nin_address,extra_tags='m10')
-                messages.info(request,nin_residencelga,extra_tags='m11')
-                messages.info(request,nin_residencestate,extra_tags='m12')
-                # messages.info(request,nin_stateoforigin,extra_tags='m14')
-                # messages.info(request,nin_noksurname,extra_tags='m15')
-                # messages.info(request,nin_nokfirstname,extra_tags='m16')
-                # messages.info(request,nin_nokmiddlename,extra_tags='m17')
-                # messages.info(request,nin_noktown,extra_tags='m18')
-                # messages.info(request,nin_nokstate,extra_tags='m19')
-                # messages.info(request,nin_country,extra_tags='m20')
-                # messages.info(request,nin_title,extra_tags='m21')
-                
-                #image 
-                photo = ress['photo']
-                byte_data =f"'{photo}'"
-                b= base64.b64decode(byte_data)
-                data = io.BytesIO(b)
-                data.seek(0)
-                pp = Image.open(data)
-                pp.save(data, "PNG")
-                end = base64.b64encode(data.getvalue())
-                img  = end.decode('utf-8')
-                request.session['img'] = img
-                #sig  
-                photo1 = ress['signature']
-                byte_data1 =f"'{photo1}'"
-                b1= base64.b64decode(byte_data1)
-                data1 = io.BytesIO(b1)
-                data1.seek(0)
-                pp1 = Image.open(data1)
-                pp1.save(data1, "PNG")
-                end1 = base64.b64encode(data1.getvalue())
-                img1  = end1.decode('utf-8')
                 
                 
-                
-                return render(request,'v_by_phone.html',{"img_data":img,"img_data1":img1,"wallet":ss})
+                    return render(request,'v_by_phone.html',{"img_data":img,"img_data1":img1,"wallet":ss})
             
     return render(request, 'v_by_phone.html',{"wallet":nn})
 
@@ -587,7 +819,7 @@ def voters(request):
 def pdf(request):
     request.user
     #pdf
-    #template_path = 'Nimc.html'
+    #template_path = 'nin_form.html'
     
     
     
@@ -603,21 +835,21 @@ def pdf(request):
                 'img':request.session['img']
                 
     }
-    #response = HttpResponse(content_type='application/pdf')
-    #response['Content-Disposition'] = 'filename="report.pdf"'
-    # find the template and render it.
-    #template = get_template(template_path)
-    #html = template.render(context)
+    # response = HttpResponse(content_type='application/pdf')
+    # response['Content-Disposition'] = 'filename="report.pdf"'
+    # # find the template and render it.
+    # template = get_template(template_path)
+    # html = template.render(context)
     
-    # create a pdf
-    #pisa_status = pisa.CreatePDF(
-    #html, dest=response)  
+    # # create a pdf
+    # pisa_status = pisa.CreatePDF(
+    # html, dest=response)  
     
-    # if error then show some funny view
-    #if pisa_status.err:
-       #return HttpResponse('We had some errors <pre>' + html + '</pre>')
-    #return response
-    return render(request, 'Nimc.html',context)
+    # # if error then show some funny view
+    # if pisa_status.err:
+    #    return HttpResponse('We had some errors <pre>' + html + '</pre>')
+    # return response
+    return render(request, 'nin_form.html',context)
     
 
 
